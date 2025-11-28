@@ -1,8 +1,14 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
 import { getCountryDetails, type Country } from "../services/api";
 import { Footer } from "../components/Footer";
+import { CountryDetailsHeader } from "../components/CountryDetailsHeader";
+import { CountryFlag } from "../components/CountryFlag";
+import { CountryInfo } from "../components/CountryInfo";
+import { CountryStats } from "../components/CountryStats";
+import { CountryAdditionalInfo } from "../components/CountryAdditionalInfo";
+import { LoadingState } from "../components/LoadingState";
+import { ErrorState } from "../components/ErrorState";
 
 export const CountryDetails = () => {
   const { code } = useParams<{ code: string }>();
@@ -34,10 +40,6 @@ export const CountryDetails = () => {
     fetchCountry();
   }, [code]);
 
-  const formatPopulation = (pop: number) => {
-    return new Intl.NumberFormat("pt-BR").format(pop);
-  };
-
   const getLanguages = () => {
     if (!country?.languages) return "N/A";
     return Object.values(country.languages).join(", ");
@@ -56,107 +58,45 @@ export const CountryDetails = () => {
   };
 
   if (isLoading) {
-    return (
-      <div className="min-h-screen bg-[#1a2c42] flex items-center justify-center">
-        <div className="text-white text-xl">Carregando...</div>
-      </div>
-    );
+    return <LoadingState />;
   }
 
   if (error || !country) {
     return (
-      <div className="min-h-screen bg-[#1a2c42] flex items-center justify-center px-4">
-        <div className="text-center">
-          <div className="text-red-400 text-xl mb-4">
-            {error || "País não encontrado"}
-          </div>
-          <button
-            onClick={() => navigate("/")}
-            className="px-6 py-2 bg-[#2a4470] text-white rounded-lg hover:bg-[#213559]"
-          >
-            Voltar ao Início
-          </button>
-        </div>
-      </div>
+      <ErrorState
+        message={error || "País não encontrado"}
+        onBack={() => navigate("/")}
+      />
     );
   }
 
   return (
     <div className="min-h-screen bg-[#1a2c42] text-white">
-      <div className="bg-[#213559] p-4">
-        <button
-          onClick={() => navigate("/")}
-          className="flex items-center gap-2 text-white hover:text-gray-300 transition-colors"
-        >
-          <div className="w-10 h-10 rounded-full border-2 border-white/30 flex items-center justify-center hover:bg-white/10 transition-colors">
-            <ArrowLeft size={20} />
-          </div>
-        </button>
-      </div>
+      <CountryDetailsHeader onBack={() => navigate("/")} />
 
       <div className="px-4 py-8 max-w-2xl mx-auto">
-        <div className="mb-8">
-          <div className="w-full max-w-md mx-auto aspect-3/2 rounded-lg overflow-hidden shadow-2xl border-4 border-green-600">
-            <img
-              src={country.flags.svg}
-              alt={country.flags.alt || `Flag of ${country.name.common}`}
-              className="w-full h-full object-cover"
-            />
-          </div>
-        </div>
+        <CountryFlag
+          flagUrl={country.flags.svg}
+          alt={country.flags.alt || ""}
+          countryName={country.name.common}
+        />
 
-        <div className="text-center mb-2">
-          <h1 className="text-4xl font-bold mb-1">{country.name.common}</h1>
-          <p className="text-gray-400 text-lg mb-1">{country.name.common}</p>
-          <p className="text-gray-400 text-base">{country.region}</p>
-        </div>
+        <CountryInfo
+          commonName={country.name.common}
+          region={country.region}
+          capital={country.capital?.[0]}
+        />
 
-        <div className="text-center mb-8">
-          <p className="text-cyan-400 text-sm mb-1">Capital</p>
-          <p className="text-white text-xl font-semibold">
-            {country.capital?.[0] || "N/A"}
-          </p>
-        </div>
+        <CountryStats
+          population={country.population}
+          languages={getLanguages()}
+          currencies={getCurrencies()}
+        />
 
-        <div className="grid grid-cols-2 gap-6 mb-8">
-          <div className="text-center">
-            <p className="text-cyan-400 text-xs mb-2">Área</p>
-            <p className="text-white text-lg font-semibold">
-              {country.latlng ? "N/A" : "N/A"}
-            </p>
-          </div>
-
-          <div className="text-center">
-            <p className="text-cyan-400 text-xs mb-2">População</p>
-            <p className="text-white text-lg font-semibold">
-              {formatPopulation(country.population)}
-            </p>
-          </div>
-
-          <div className="text-center">
-            <p className="text-cyan-400 text-xs mb-2">Idiomas</p>
-            <p className="text-white text-lg font-semibold">{getLanguages()}</p>
-          </div>
-
-          <div className="text-center">
-            <p className="text-cyan-400 text-xs mb-2">Moedas</p>
-            <p className="text-white text-lg font-semibold">
-              {getCurrencies()}
-            </p>
-          </div>
-        </div>
-
-        <div className="text-center mb-8">
-          <p className="text-cyan-400 text-sm mb-2">Domínios de internet</p>
-          <p className="text-white text-xl font-semibold">
-            {country.tld?.[0] || "N/A"}
-          </p>
-        </div>
-
-        <div className="mb-8">
-          <p className="text-white text-sm font-semibold mb-2">Fronteiras</p>
-          <p className="text-white text-base leading-relaxed">{getBorders()}</p>
-        </div>
+        <CountryAdditionalInfo
+          internetDomain={country.tld?.[0]}
+          borders={getBorders()}
+        />
 
         <Footer />
       </div>
