@@ -1,6 +1,11 @@
 import { SearchInput } from "./SearchInput";
 
-export const HeroSection = () => {
+interface HeroSectionProps {
+  onSearch: (searchTerm: string) => void;
+  onFilter: (region: string) => void;
+}
+
+export const HeroSection = ({ onSearch, onFilter }: HeroSectionProps) => {
   return (
     <div className="flex items-center justify-center h-screen">
       <div className="relative">
@@ -9,7 +14,7 @@ export const HeroSection = () => {
           <h1 className="text-white text-3xl">
             <span className="font-bold">Geo</span>Pedia
           </h1>
-          <SearchInput />
+          <SearchInput onChange={onSearch} onFilterChange={onFilter} />
         </div>
       </div>
     </div>

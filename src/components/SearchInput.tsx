@@ -2,7 +2,6 @@ import { FilterIcon } from "lucide-react";
 import { useState } from "react";
 
 interface SearchInputProps {
-  value?: string;
   onChange?: (value: string) => void;
   onFilterChange?: (region: string) => void;
   placeholder?: string;
@@ -12,14 +11,25 @@ interface SearchInputProps {
 const REGIONS = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
 
 export const SearchInput = ({
-  value,
   onChange,
   onFilterChange,
   placeholder = "Search for a country...",
   className = "",
 }: SearchInputProps) => {
+  const [searchValue, setSearchValue] = useState("");
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [selectedRegion, setSelectedRegion] = useState("");
+
+  const handleSearchChange = (value: string) => {
+    setSearchValue(value);
+    onChange?.(value);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      onChange?.(searchValue);
+    }
+  };
 
   const handleRegionClick = (region: string) => {
     const newRegion = selectedRegion === region ? "" : region;
@@ -33,14 +43,16 @@ export const SearchInput = ({
       <div className="p-2 rounded-md bg-white/10 backdrop-blur-md border border-white/20 flex items-center">
         <input
           type="text"
-          value={value}
-          onChange={(e) => onChange?.(e.target.value)}
+          value={searchValue}
+          onChange={(e) => handleSearchChange(e.target.value)}
+          onKeyDown={handleKeyDown}
           placeholder={placeholder}
           className="grow bg-transparent outline-none text-white placeholder:text-gray-300"
         />
         <button
           onClick={() => setIsFilterOpen(!isFilterOpen)}
           className="cursor-pointer hover:scale-110 transition-transform"
+          type="button"
         >
           <FilterIcon className="text-gray-300" />
         </button>
@@ -56,6 +68,7 @@ export const SearchInput = ({
               <button
                 key={region}
                 onClick={() => handleRegionClick(region)}
+                type="button"
                 className={`w-full text-left px-3 py-2 rounded text-white hover:bg-white/20 transition-colors ${
                   selectedRegion === region ? "bg-white/30" : ""
                 }`}
@@ -66,6 +79,7 @@ export const SearchInput = ({
             {selectedRegion && (
               <button
                 onClick={() => handleRegionClick("")}
+                type="button"
                 className="w-full text-left px-3 py-2 rounded text-gray-300 hover:bg-white/20 transition-colors mt-1"
               >
                 Clear filter
