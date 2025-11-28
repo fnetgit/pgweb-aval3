@@ -96,7 +96,7 @@ export const CountryDetails = () => {
 
       <div className="px-4 py-8 max-w-2xl mx-auto">
         <div className="mb-8">
-          <div className="w-full max-w-md mx-auto aspect-[3/2] rounded-lg overflow-hidden shadow-2xl border-4 border-green-600">
+          <div className="w-full max-w-md mx-auto aspect-3/2 rounded-lg overflow-hidden shadow-2xl border-4 border-green-600">
             <img
               src={country.flags.svg}
               alt={country.flags.alt || `Flag of ${country.name.common}`}
