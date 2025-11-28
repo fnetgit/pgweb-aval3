@@ -14,7 +14,7 @@ export const CountryDetails = () => {
   useEffect(() => {
     const fetchCountry = async () => {
       if (!code) {
-        setError("Country code not provided");
+        setError("Código do país não fornecido");
         setIsLoading(false);
         return;
       }
@@ -25,7 +25,7 @@ export const CountryDetails = () => {
         setCountry(data);
         setError(null);
       } catch (err) {
-        setError(err instanceof Error ? err.message : "Failed to load country");
+        setError(err instanceof Error ? err.message : "Falha ao carregar país");
       } finally {
         setIsLoading(false);
       }
@@ -68,13 +68,13 @@ export const CountryDetails = () => {
       <div className="min-h-screen bg-[#1a2c42] flex items-center justify-center px-4">
         <div className="text-center">
           <div className="text-red-400 text-xl mb-4">
-            {error || "Country not found"}
+            {error || "País não encontrado"}
           </div>
           <button
             onClick={() => navigate("/")}
             className="px-6 py-2 bg-[#2a4470] text-white rounded-lg hover:bg-[#213559]"
           >
-            Back to Home
+            Voltar ao Início
           </button>
         </div>
       </div>

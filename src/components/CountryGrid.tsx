@@ -15,7 +15,7 @@ export const CountryGrid = ({
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-[400px]">
-        <div className="text-white text-xl">Loading countries...</div>
+        <div className="text-white text-xl">Carregando países...</div>
       </div>
     );
   }
@@ -23,7 +23,7 @@ export const CountryGrid = ({
   if (error) {
     return (
       <div className="flex items-center justify-center min-h-[400px]">
-        <div className="text-red-400 text-xl">Error: {error}</div>
+        <div className="text-red-400 text-xl">Erro: {error}</div>
       </div>
     );
   }
@@ -32,7 +32,7 @@ export const CountryGrid = ({
     return (
       <div className="flex items-center justify-center min-h-[400px]">
         <div className="text-gray-300 text-xl">
-          No countries found. Try a different search.
+          Nenhum país encontrado. Tente uma busca diferente.
         </div>
       </div>
     );

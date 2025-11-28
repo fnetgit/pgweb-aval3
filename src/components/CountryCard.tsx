@@ -38,7 +38,7 @@ export const CountryCard = ({ country }: CountryCardProps) => {
         <div className="space-y-1.5 sm:space-y-2 text-gray-200 text-xs sm:text-sm">
           <div className="flex items-center gap-2">
             <Users size={16} className="text-gray-300" />
-            <span className="text-gray-400">Population:</span>
+            <span className="text-gray-400">População:</span>
             <span className="font-semibold">
               {formatPopulation(country.population)}
             </span>
@@ -46,7 +46,7 @@ export const CountryCard = ({ country }: CountryCardProps) => {
 
           <div className="flex items-center gap-2">
             <MapPin size={16} className="text-gray-300" />
-            <span className="text-gray-400">Region:</span>
+            <span className="text-gray-400">Região:</span>
             <span className="font-semibold">{country.region}</span>
           </div>
 

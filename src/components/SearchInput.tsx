@@ -13,7 +13,7 @@ const REGIONS = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
 export const SearchInput = ({
   onChange,
   onFilterChange,
-  placeholder = "Search for a country...",
+  placeholder = "Pesquisar por um país...",
   className = "",
 }: SearchInputProps) => {
   const [searchValue, setSearchValue] = useState("");
@@ -62,7 +62,7 @@ export const SearchInput = ({
         <div className="absolute top-full mt-2 w-full bg-white/10 backdrop-blur-md border border-white/20 rounded-md overflow-hidden z-10">
           <div className="p-2">
             <p className="text-white text-sm font-semibold mb-2">
-              Filter by Region
+              Filtrar por Região
             </p>
             {REGIONS.map((region) => (
               <button
@@ -82,7 +82,7 @@ export const SearchInput = ({
                 type="button"
                 className="w-full text-left px-3 py-2 rounded text-gray-300 hover:bg-white/20 transition-colors mt-1"
               >
-                Clear filter
+                Limpar Filtro
               </button>
             )}
           </div>
