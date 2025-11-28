@@ -1,7 +1,8 @@
+import { HeroSection } from "../components/HeroSection";
 export const Home = () => {
   return (
-    <h1 className="flex items-center justify-center h-screen text-4xl">
-      Hello World
-    </h1>
+    <div className="min-h-screen bg-[#213559]">
+      <HeroSection />
+    </div>
   );
 };
