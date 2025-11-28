@@ -47,16 +47,16 @@ export function useCountries() {
     region: "",
     searchTerm: "",
   });
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchCountries = async () => {
       try {
-        setIsLoading(true);
         const data = await getAllCountries();
         const sortedData = CountryFilterService.sortByName(data);
         setAllCountries(sortedData);
+        setError(null);
       } catch (err) {
         setError(err instanceof Error ? err.message : "Unknown error");
       } finally {
@@ -86,10 +86,8 @@ export function useCountries() {
 
   return {
     countries: filteredCountries,
-    allCountries,
     isLoading,
     error,
-    filters,
     filterByRegion,
     searchByName,
     resetFilters,
