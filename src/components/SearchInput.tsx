@@ -39,8 +39,8 @@ export const SearchInput = ({
   };
 
   return (
-    <div className={`relative w-2/3 max-w-md ${className}`}>
-      <div className="p-2 rounded-md bg-white/10 backdrop-blur-md border border-white/20 flex items-center">
+    <div className={`relative w-full sm:w-4/5 md:w-2/3 max-w-md px-4 sm:px-0 ${className}`}>
+      <div className="p-2 sm:p-3 rounded-md bg-white/10 backdrop-blur-md border border-white/20 flex items-center">
         <input
           type="text"
           value={searchValue}

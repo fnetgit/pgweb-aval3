@@ -39,9 +39,9 @@ export const CountryGrid = ({
   }
 
   return (
-    <div className="container mx-auto px-4 -mt-60 md:-mt-50 relative z-10">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-        {countries.slice(0, 20).map((country) => (
+    <div className="container mx-auto px-4 -mt-20 sm:-mt-32 md:-mt-40 lg:-mt-50 relative z-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-5 md:gap-6">
+        {countries.map((country) => (
           <CountryCard key={country.cca3} country={country} />
         ))}
       </div>

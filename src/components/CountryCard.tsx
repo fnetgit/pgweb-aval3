@@ -22,7 +22,7 @@ export const CountryCard = ({ country }: CountryCardProps) => {
       onClick={handleClick}
       className="bg-white/10 backdrop-blur-md border border-white/20 rounded-lg overflow-hidden cursor-pointer hover:scale-105 hover:bg-white/20 transition-all duration-300 shadow-lg"
     >
-      <div className="relative h-40 w-full overflow-hidden">
+      <div className="relative h-32 sm:h-36 md:h-40 w-full overflow-hidden">
         <img
           src={country.flags.svg}
           alt={country.flags.alt || `Flag of ${country.name.common}`}
@@ -30,12 +30,12 @@ export const CountryCard = ({ country }: CountryCardProps) => {
         />
       </div>
 
-      <div className="p-4">
-        <h3 className="text-white font-bold text-lg mb-3 truncate">
+      <div className="p-3 sm:p-4">
+        <h3 className="text-white font-bold text-base sm:text-lg mb-2 sm:mb-3 truncate">
           {country.name.common}
         </h3>
 
-        <div className="space-y-2 text-gray-200 text-sm">
+        <div className="space-y-1.5 sm:space-y-2 text-gray-200 text-xs sm:text-sm">
           <div className="flex items-center gap-2">
             <Users size={16} className="text-gray-300" />
             <span className="text-gray-400">Population:</span>
