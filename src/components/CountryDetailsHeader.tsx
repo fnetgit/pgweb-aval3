@@ -6,7 +6,7 @@ interface CountryDetailsHeaderProps {
 
 export const CountryDetailsHeader = ({ onBack }: CountryDetailsHeaderProps) => {
   return (
-    <div className="bg-[var(--color-primary-light)] p-4">
+    <div className="bg-(--color-primary-light) p-4">
       <button
         onClick={onBack}
         className="flex items-center gap-2 text-white hover:text-gray-300 transition-colors"

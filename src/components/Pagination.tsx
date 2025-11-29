@@ -41,7 +41,7 @@ export const Pagination = ({
         className={`px-2 sm:px-3 py-1.5 sm:py-2 rounded transition-colors text-sm sm:text-base ${
           currentPage === 1
             ? "text-gray-500 cursor-not-allowed"
-            : "hover:bg-[var(--color-primary-lighter))] active:bg-[var(--color-primary))]"
+            : "hover:bg-(--color-primary-lighter) active:bg-(--color-primary)"
         }`}
         aria-label="Primeira página"
       >
@@ -54,7 +54,7 @@ export const Pagination = ({
         className={`px-2 sm:px-3 py-1.5 sm:py-2 rounded transition-colors text-sm sm:text-base ${
           currentPage === 1
             ? "text-gray-500 cursor-not-allowed"
-            : "hover:bg-[var(--color-primary-lighter))] active:bg-[var(--color-primary))]"
+            : "hover:bg-(--color-primary-lighter) active:bg-(--color-primary)"
         }`}
         aria-label="Página anterior"
       >
@@ -71,7 +71,7 @@ export const Pagination = ({
         className={`px-2 sm:px-3 py-1.5 sm:py-2 rounded transition-colors text-sm sm:text-base ${
           currentPage === totalPages
             ? "text-gray-500 cursor-not-allowed"
-            : "hover:bg-[var(--color-primary-lighter))] active:bg-[var(--color-primary))]"
+            : "hover:bg-(--color-primary-lighter) active:bg-(--color-primary)"
         }`}
         aria-label="Próxima página"
       >
@@ -84,7 +84,7 @@ export const Pagination = ({
         className={`px-2 sm:px-3 py-1.5 sm:py-2 rounded transition-colors text-sm sm:text-base ${
           currentPage === totalPages
             ? "text-gray-500 cursor-not-allowed"
-            : "hover:bg-[var(--color-primary-lighter))] active:bg-[var(--color-primary))]"
+            : "hover:bg-(--color-primary-lighter) active:bg-(--color-primary)"
         }`}
         aria-label="Última página"
       >

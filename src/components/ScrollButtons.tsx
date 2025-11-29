@@ -36,7 +36,7 @@ export const ScrollButtons = () => {
     <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50">
       <button
         onClick={handleClick}
-        className="p-2 sm:p-3 bg-[var(--color-primary-lighter)] text-white rounded-full shadow-lg hover:bg-[var(--color-primary-light))] transition-all duration-300 hover:scale-110 active:scale-95"
+        className="p-2 sm:p-3 bg-(--color-primary-lighter) text-white rounded-full shadow-lg hover:bg-(--color-primary-light) transition-all duration-300 hover:scale-110 active:scale-95"
         aria-label={isNearTop ? "Ir para o final" : "Voltar ao topo"}
       >
         {isNearTop ? (

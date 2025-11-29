@@ -47,7 +47,7 @@ export const Home = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[var(--color-primary-dark)]">
+    <div className="min-h-screen bg-(--color-primary-dark)">
       <ScrollButtons />
       <HeroSection
         onSearch={handleSearch}
