@@ -3,7 +3,6 @@ import { AboutHeader } from "../components/AboutHeader";
 import { ProjectDescription } from "../components/ProjectDescription";
 import { TeamGrid } from "../components/TeamGrid";
 import { TechnologiesSection } from "../components/TechnologiesSection";
-import { Footer } from "../components/Footer";
 import type { TeamMember } from "../components/TeamMemberCard";
 
 const teamMembers: TeamMember[] = [
