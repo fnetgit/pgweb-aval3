@@ -45,8 +45,6 @@ export const AboutTeam = () => {
         <TeamGrid members={teamMembers} />
         <TechnologiesSection />
       </div>
-
-      <Footer />
     </div>
   );
 };
