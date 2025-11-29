@@ -49,7 +49,7 @@ export const SearchInput = ({
 
   return (
     <div
-      className={`relative w-full sm:w-4/5 md:w-2/3 max-w-md px-4 sm:px-0 ${className}`}
+      className={`relative w-full sm:w-4/5 md:w-2/3 max-w-md px-4 sm:px-0 z-50 ${className}`}
     >
       <div className="p-2 sm:p-3 rounded-md bg-white/10 backdrop-blur-md border border-white/20 flex items-center gap-2">
         <input
@@ -85,7 +85,7 @@ export const SearchInput = ({
       </div>
 
       {isFilterOpen && (
-        <div className="absolute top-full mt-2 w-full bg-white/10 backdrop-blur-md border border-white/20 rounded-md overflow-hidden z-10">
+        <div className="absolute top-full mt-2 w-full bg-white/10 backdrop-blur-md border border-white/20 rounded-md overflow-hidden z-50">
           <div className="p-2">
             <p className="text-white text-sm font-semibold mb-2">
               Filtrar por Região
