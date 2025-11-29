@@ -4,6 +4,7 @@ import { getAllCountries, type Country } from "../services/api";
 interface CountryFilter {
   region: string;
   searchTerm: string;
+  showOnlyFavorites: boolean;
 }
 
 class CountryFilterService {
@@ -20,8 +21,18 @@ class CountryFilterService {
     );
   }
 
-  static applyFilters(countries: Country[], filters: CountryFilter): Country[] {
+  static applyFilters(
+    countries: Country[],
+    filters: CountryFilter,
+    favoritesCodes: string[]
+  ): Country[] {
     let filtered = countries;
+
+    if (filters.showOnlyFavorites) {
+      filtered = filtered.filter((country) =>
+        favoritesCodes.includes(country.cca3)
+      );
+    }
 
     if (filters.region) {
       filtered = this.filterByRegion(filtered, filters.region);
@@ -41,11 +52,12 @@ class CountryFilterService {
   }
 }
 
-export function useCountries() {
+export function useCountries(favoritesCodes: string[] = []) {
   const [allCountries, setAllCountries] = useState<Country[]>([]);
   const [filters, setFilters] = useState<CountryFilter>({
     region: "",
     searchTerm: "",
+    showOnlyFavorites: false,
   });
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -68,8 +80,9 @@ export function useCountries() {
   }, []);
 
   const filteredCountries = useMemo(
-    () => CountryFilterService.applyFilters(allCountries, filters),
-    [allCountries, filters]
+    () =>
+      CountryFilterService.applyFilters(allCountries, filters, favoritesCodes),
+    [allCountries, filters, favoritesCodes]
   );
 
   const filterByRegion = useCallback((region: string) => {
@@ -81,7 +94,11 @@ export function useCountries() {
   }, []);
 
   const resetFilters = useCallback(() => {
-    setFilters({ region: "", searchTerm: "" });
+    setFilters({ region: "", searchTerm: "", showOnlyFavorites: false });
+  }, []);
+
+  const filterByFavorites = useCallback((showOnlyFavorites: boolean) => {
+    setFilters((prev) => ({ ...prev, showOnlyFavorites }));
   }, []);
 
   return {
@@ -91,5 +108,6 @@ export function useCountries() {
     filterByRegion,
     searchByName,
     resetFilters,
+    filterByFavorites,
   };
 }

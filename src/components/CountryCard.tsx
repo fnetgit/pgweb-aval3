@@ -1,12 +1,18 @@
-import { type Country } from "../services/api";
-import { Users, MapPin } from "lucide-react";
+import { type Country, getCountryNameInPortuguese } from "../services/api";
+import { Users, MapPin, Star } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 interface CountryCardProps {
   country: Country;
+  isFavorite: boolean;
+  onToggleFavorite: (countryCode: string) => void;
 }
 
-export const CountryCard = ({ country }: CountryCardProps) => {
+export const CountryCard = ({
+  country,
+  isFavorite,
+  onToggleFavorite,
+}: CountryCardProps) => {
   const navigate = useNavigate();
 
   const formatPopulation = (pop: number) => {
@@ -15,6 +21,11 @@ export const CountryCard = ({ country }: CountryCardProps) => {
 
   const handleClick = () => {
     navigate(`/country/${country.cca3}`);
+  };
+
+  const handleFavoriteClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    onToggleFavorite(country.cca3);
   };
 
   return (
@@ -28,11 +39,25 @@ export const CountryCard = ({ country }: CountryCardProps) => {
           alt={country.flags.alt || `Flag of ${country.name.common}`}
           className="w-full h-full object-cover"
         />
+        <button
+          onClick={handleFavoriteClick}
+          className="absolute top-2 right-2 p-2 bg-black/50 backdrop-blur-sm rounded-full hover:bg-black/70 transition-all duration-200 hover:scale-110"
+          aria-label={
+            isFavorite ? "Remover dos favoritos" : "Adicionar aos favoritos"
+          }
+        >
+          <Star
+            size={20}
+            className={`transition-colors ${
+              isFavorite ? "fill-yellow-400 text-yellow-400" : "text-white"
+            }`}
+          />
+        </button>
       </div>
 
       <div className="p-3 sm:p-4">
         <h3 className="text-white font-bold text-base sm:text-lg mb-2 sm:mb-3 truncate">
-          {country.name.common}
+          {getCountryNameInPortuguese(country)}
         </h3>
 
         <div className="space-y-1.5 sm:space-y-2 text-gray-200 text-xs sm:text-sm">

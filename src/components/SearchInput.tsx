@@ -1,9 +1,10 @@
-import { FilterIcon } from "lucide-react";
+import { FilterIcon, Star } from "lucide-react";
 import { useState } from "react";
 
 interface SearchInputProps {
   onChange?: (value: string) => void;
   onFilterChange?: (region: string) => void;
+  onFavoritesFilterChange?: (showOnlyFavorites: boolean) => void;
   placeholder?: string;
   className?: string;
 }
@@ -13,12 +14,14 @@ const REGIONS = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
 export const SearchInput = ({
   onChange,
   onFilterChange,
+  onFavoritesFilterChange,
   placeholder = "Pesquisar por um país...",
   className = "",
 }: SearchInputProps) => {
   const [searchValue, setSearchValue] = useState("");
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [selectedRegion, setSelectedRegion] = useState("");
+  const [showOnlyFavorites, setShowOnlyFavorites] = useState(false);
 
   const handleSearchChange = (value: string) => {
     setSearchValue(value);
@@ -38,9 +41,17 @@ export const SearchInput = ({
     setIsFilterOpen(false);
   };
 
+  const handleFavoritesToggle = () => {
+    const newValue = !showOnlyFavorites;
+    setShowOnlyFavorites(newValue);
+    onFavoritesFilterChange?.(newValue);
+  };
+
   return (
-    <div className={`relative w-full sm:w-4/5 md:w-2/3 max-w-md px-4 sm:px-0 ${className}`}>
-      <div className="p-2 sm:p-3 rounded-md bg-white/10 backdrop-blur-md border border-white/20 flex items-center">
+    <div
+      className={`relative w-full sm:w-4/5 md:w-2/3 max-w-md px-4 sm:px-0 ${className}`}
+    >
+      <div className="p-2 sm:p-3 rounded-md bg-white/10 backdrop-blur-md border border-white/20 flex items-center gap-2">
         <input
           type="text"
           value={searchValue}
@@ -49,6 +60,21 @@ export const SearchInput = ({
           placeholder={placeholder}
           className="grow bg-transparent outline-none text-white placeholder:text-gray-300"
         />
+        <button
+          onClick={handleFavoritesToggle}
+          className={`cursor-pointer hover:scale-110 transition-all ${
+            showOnlyFavorites ? "text-yellow-400" : "text-gray-300"
+          }`}
+          type="button"
+          title={
+            showOnlyFavorites ? "Mostrar todos" : "Mostrar apenas favoritos"
+          }
+        >
+          <Star
+            size={20}
+            className={showOnlyFavorites ? "fill-yellow-400" : ""}
+          />
+        </button>
         <button
           onClick={() => setIsFilterOpen(!isFilterOpen)}
           className="cursor-pointer hover:scale-110 transition-transform"

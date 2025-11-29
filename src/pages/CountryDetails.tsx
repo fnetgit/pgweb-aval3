@@ -31,8 +31,7 @@ export const CountryDetails = () => {
         setIsLoading(true);
         const data = await getCountryDetails(code);
         setCountry(data);
-        // start color sampling right after we receive the flag URL so it can
-        // begin before child components mount (reduces visible flash)
+
         (async () => {
           try {
             const color = await extractReadableFlagColor(data.flags.svg);
@@ -93,12 +92,7 @@ export const CountryDetails = () => {
           countryName={country.name.common}
         />
 
-        <CountryInfo
-          commonName={country.name.common}
-          region={country.region}
-          capital={country.capital?.[0]}
-          labelColor={labelColor}
-        />
+        <CountryInfo country={country} labelColor={labelColor} />
 
         <CountryStats
           population={country.population}

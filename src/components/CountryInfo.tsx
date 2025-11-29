@@ -1,22 +1,20 @@
+import { type Country, getCountryNameInPortuguese } from "../services/api";
+
 interface CountryInfoProps {
-  commonName: string;
-  region: string;
-  capital?: string;
+  country: Country;
   labelColor?: string | null;
 }
 
-export const CountryInfo = ({
-  commonName,
-  region,
-  capital,
-  labelColor,
-}: CountryInfoProps) => {
+export const CountryInfo = ({ country, labelColor }: CountryInfoProps) => {
+  const nameInPortuguese = getCountryNameInPortuguese(country);
+  const originalName = country.name.common;
+
   return (
     <>
       <div className="text-center mb-2">
-        <h1 className="text-4xl font-bold mb-1">{commonName}</h1>
-        <p className="text-gray-400 text-lg mb-1">{commonName}</p>
-        <p className="text-gray-400 text-base">{region}</p>
+        <h1 className="text-4xl font-bold mb-1">{nameInPortuguese}</h1>
+        <p className="text-gray-400 text-lg mb-1">{originalName}</p>
+        <p className="text-gray-400 text-base">{country.region}</p>
       </div>
 
       <div className="text-center mb-8">
@@ -28,7 +26,9 @@ export const CountryInfo = ({
         >
           Capital
         </p>
-        <p className="text-white text-xl font-semibold">{capital || "N/A"}</p>
+        <p className="text-white text-xl font-semibold">
+          {country.capital?.[0] || "N/A"}
+        </p>
       </div>
     </>
   );

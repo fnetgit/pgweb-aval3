@@ -18,6 +18,18 @@ export interface Currency {
 
 export interface Country {
   name: CountryName;
+  translations?: {
+    por?: {
+      official: string;
+      common: string;
+    };
+    [key: string]:
+      | {
+          official: string;
+          common: string;
+        }
+      | undefined;
+  };
   cca3: string;
   region: string;
   subregion?: string;
@@ -103,8 +115,8 @@ class CountryAPIService {
 
   static async getAllCountries(): Promise<Country[]> {
     const strategies = [
-      `${this.BASE_URL}/all?fields=name,flags,population,region,capital,cca3`,
-      `${this.BASE_URL}/all?fields=name,flags,population,region,capital,cca3,subregion,tld`,
+      `${this.BASE_URL}/all?fields=name,translations,flags,population,region,capital,cca3`,
+      `${this.BASE_URL}/all?fields=name,translations,flags,population,region,capital,cca3,subregion,tld`,
       `${this.BASE_URL}/all`,
     ];
 
@@ -179,3 +191,7 @@ export const getCountryDetails = (code: string): Promise<Country> =>
 
 export const getBorderCountries = (codes: string[]): Promise<Country[]> =>
   CountryAPIService.getCountriesByCodes(codes);
+
+export const getCountryNameInPortuguese = (country: Country): string => {
+  return country.translations?.por?.common || country.name.common;
+};

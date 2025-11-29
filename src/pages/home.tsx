@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useCountries } from "../hooks/useCountries";
+import { useFavorites } from "../hooks/useFavorites";
 import { CountryGrid } from "../components/CountryGrid";
 import { Footer } from "../components/Footer";
 import { HeroSection } from "../components/HeroSection";
@@ -8,8 +9,15 @@ import { Pagination } from "../components/Pagination";
 const ITEMS_PER_PAGE = 20;
 
 export const Home = () => {
-  const { countries, isLoading, error, filterByRegion, searchByName } =
-    useCountries();
+  const { favorites, toggleFavorite, isFavorite } = useFavorites();
+  const {
+    countries,
+    isLoading,
+    error,
+    filterByRegion,
+    searchByName,
+    filterByFavorites,
+  } = useCountries(favorites);
   const [currentPage, setCurrentPage] = useState(1);
 
   const totalPages = Math.ceil(countries.length / ITEMS_PER_PAGE);
@@ -32,13 +40,24 @@ export const Home = () => {
     setCurrentPage(1);
   };
 
+  const handleFavoritesFilter = (showOnlyFavorites: boolean) => {
+    filterByFavorites(showOnlyFavorites);
+    setCurrentPage(1);
+  };
+
   return (
     <div className="min-h-screen bg-[#0e1e33]">
-      <HeroSection onSearch={handleSearch} onFilter={handleFilter} />
+      <HeroSection
+        onSearch={handleSearch}
+        onFilter={handleFilter}
+        onFavoritesFilter={handleFavoritesFilter}
+      />
       <CountryGrid
         countries={currentCountries}
         isLoading={isLoading}
         error={error}
+        isFavorite={isFavorite}
+        onToggleFavorite={toggleFavorite}
       />
       {!isLoading && !error && countries.length > 0 && (
         <Pagination
