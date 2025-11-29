@@ -100,6 +100,7 @@ export const CountryDetails = () => {
           population={country.population}
           languages={getLanguages()}
           currencies={getCurrencies()}
+          area={country.area}
           labelColor={labelColor}
         />
 

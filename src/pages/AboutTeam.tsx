@@ -4,6 +4,7 @@ import { ProjectDescription } from "../components/ProjectDescription";
 import { TeamGrid } from "../components/TeamGrid";
 import { TechnologiesSection } from "../components/TechnologiesSection";
 import type { TeamMember } from "../components/TeamMemberCard";
+import { Footer } from "../components/Footer";
 
 const teamMembers: TeamMember[] = [
   {
@@ -17,7 +18,7 @@ const teamMembers: TeamMember[] = [
   },
   {
     name: "Fabricio Fontenele",
-    role: "Desenvolvedor Frontend",
+    role: "Data Scientist & Desenvolvedor Back End",
     photo: "https://avatars.githubusercontent.com/Fabricio-Fontenele",
     github: "https://github.com/Fabricio-Fontenele",
     linkedin: "https://www.linkedin.com/in/fabricio-fontenele/",
@@ -56,6 +57,7 @@ export const AboutTeam = () => {
         <TeamGrid members={teamMembers} />
         <TechnologiesSection />
       </div>
+      <Footer />
     </div>
   );
 };

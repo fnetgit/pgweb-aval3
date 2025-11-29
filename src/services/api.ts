@@ -49,6 +49,7 @@ export interface Country {
     openStreetMaps: string;
   };
   latlng?: [number, number];
+  area?: number;
 }
 
 export class APIError extends Error {
