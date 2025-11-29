@@ -33,7 +33,7 @@ export const Home = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#213559]">
+    <div className="min-h-screen bg-[#0e1e33]">
       <HeroSection onSearch={handleSearch} onFilter={handleFilter} />
       <CountryGrid
         countries={currentCountries}

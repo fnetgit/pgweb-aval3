@@ -4,6 +4,7 @@ import { getCountryDetails, type Country } from "../services/api";
 import { Footer } from "../components/Footer";
 import { CountryDetailsHeader } from "../components/CountryDetailsHeader";
 import { CountryFlag } from "../components/CountryFlag";
+import { extractReadableFlagColor } from "../utils/colorSampler";
 import { CountryInfo } from "../components/CountryInfo";
 import { CountryStats } from "../components/CountryStats";
 import { CountryAdditionalInfo } from "../components/CountryAdditionalInfo";
@@ -16,6 +17,7 @@ export const CountryDetails = () => {
   const [country, setCountry] = useState<Country | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [labelColor, setLabelColor] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchCountry = async () => {
@@ -29,6 +31,16 @@ export const CountryDetails = () => {
         setIsLoading(true);
         const data = await getCountryDetails(code);
         setCountry(data);
+        // start color sampling right after we receive the flag URL so it can
+        // begin before child components mount (reduces visible flash)
+        (async () => {
+          try {
+            const color = await extractReadableFlagColor(data.flags.svg);
+            setLabelColor(color);
+          } catch {
+            setLabelColor(null);
+          }
+        })();
         setError(null);
       } catch (err) {
         setError(err instanceof Error ? err.message : "Falha ao carregar país");
@@ -71,7 +83,7 @@ export const CountryDetails = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#1a2c42] text-white">
+    <div className="min-h-screen bg-[#0e1e33] text-white text-shadow-lg/20">
       <CountryDetailsHeader onBack={() => navigate("/")} />
 
       <div className="px-4 py-8 max-w-2xl mx-auto">
@@ -85,17 +97,20 @@ export const CountryDetails = () => {
           commonName={country.name.common}
           region={country.region}
           capital={country.capital?.[0]}
+          labelColor={labelColor}
         />
 
         <CountryStats
           population={country.population}
           languages={getLanguages()}
           currencies={getCurrencies()}
+          labelColor={labelColor}
         />
 
         <CountryAdditionalInfo
           internetDomain={country.tld?.[0]}
           borders={getBorders()}
+          labelColor={labelColor}
         />
 
         <Footer />

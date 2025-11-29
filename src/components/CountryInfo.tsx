@@ -2,9 +2,15 @@ interface CountryInfoProps {
   commonName: string;
   region: string;
   capital?: string;
+  labelColor?: string | null;
 }
 
-export const CountryInfo = ({ commonName, region, capital }: CountryInfoProps) => {
+export const CountryInfo = ({
+  commonName,
+  region,
+  capital,
+  labelColor,
+}: CountryInfoProps) => {
   return (
     <>
       <div className="text-center mb-2">
@@ -14,10 +20,15 @@ export const CountryInfo = ({ commonName, region, capital }: CountryInfoProps) =
       </div>
 
       <div className="text-center mb-8">
-        <p className="text-cyan-400 text-sm mb-1">Capital</p>
-        <p className="text-white text-xl font-semibold">
-          {capital || "N/A"}
+        <p
+          className={`text-sm mb-1 transition-colors duration-200 ease-in-out ${
+            !labelColor ? "text-cyan-400" : ""
+          }`}
+          style={labelColor ? { color: labelColor } : undefined}
+        >
+          Capital
         </p>
+        <p className="text-white text-xl font-semibold">{capital || "N/A"}</p>
       </div>
     </>
   );
