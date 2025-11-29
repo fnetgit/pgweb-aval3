@@ -83,7 +83,7 @@ export const CountryDetails = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#0e1e33] text-white text-shadow-lg/20">
+    <div className="min-h-screen bg-[var(--color-primary-dark)] text-white text-shadow-lg/20">
       <ScrollButtons />
       <CountryDetailsHeader onBack={() => navigate("/")} />
 

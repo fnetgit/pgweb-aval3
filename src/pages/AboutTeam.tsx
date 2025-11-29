@@ -36,7 +36,7 @@ export const AboutTeam = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-[#1a2c42] text-white">
+    <div className="min-h-screen bg-[var(--color-primary)] text-white">
       <AboutHeader onBack={() => navigate("/")} />
 
       <div className="container mx-auto px-4 py-8 sm:py-12">

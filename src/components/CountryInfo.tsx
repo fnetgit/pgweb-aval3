@@ -20,7 +20,7 @@ export const CountryInfo = ({ country, labelColor }: CountryInfoProps) => {
       <div className="text-center mb-8">
         <p
           className={`text-sm mb-1 transition-colors duration-200 ease-in-out ${
-            !labelColor ? "text-cyan-400" : ""
+            !labelColor ? "text-[var(--color-accent-cyan)]" : ""
           }`}
           style={labelColor ? { color: labelColor } : undefined}
         >
