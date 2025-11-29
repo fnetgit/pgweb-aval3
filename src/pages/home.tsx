@@ -5,6 +5,7 @@ import { CountryGrid } from "../components/CountryGrid";
 import { Footer } from "../components/Footer";
 import { HeroSection } from "../components/HeroSection";
 import { Pagination } from "../components/Pagination";
+import { ScrollButtons } from "../components/ScrollButtons";
 
 const ITEMS_PER_PAGE = 20;
 
@@ -47,6 +48,7 @@ export const Home = () => {
 
   return (
     <div className="min-h-screen bg-[#0e1e33]">
+      <ScrollButtons />
       <HeroSection
         onSearch={handleSearch}
         onFilter={handleFilter}

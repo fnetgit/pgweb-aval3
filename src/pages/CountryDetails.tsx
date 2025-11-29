@@ -10,6 +10,7 @@ import { CountryStats } from "../components/CountryStats";
 import { CountryAdditionalInfo } from "../components/CountryAdditionalInfo";
 import { LoadingState } from "../components/LoadingState";
 import { ErrorState } from "../components/ErrorState";
+import { ScrollButtons } from "../components/ScrollButtons";
 
 export const CountryDetails = () => {
   const { code } = useParams<{ code: string }>();
@@ -83,6 +84,7 @@ export const CountryDetails = () => {
 
   return (
     <div className="min-h-screen bg-[#0e1e33] text-white text-shadow-lg/20">
+      <ScrollButtons />
       <CountryDetailsHeader onBack={() => navigate("/")} />
 
       <div className="px-4 py-8 max-w-2xl mx-auto">
