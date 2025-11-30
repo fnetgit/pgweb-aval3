@@ -2,7 +2,7 @@ export const ProjectDescription = () => {
   return (
     <div className="max-w-4xl mx-auto mb-12 sm:mb-16">
       <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-lg p-6 sm:p-8">
-        <h2 className="text-xl sm:text-2xl font-bold mb-4 text-cyan-400">
+        <h2 className="text-xl sm:text-2xl font-bold mb-4 text-(--color-accent-cyan)">
           Sobre o Projeto GeoPedia
         </h2>
         <p className="text-gray-300 leading-relaxed mb-4">

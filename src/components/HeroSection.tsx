@@ -12,7 +12,7 @@ export const HeroSection = ({
   onFavoritesFilter,
 }: HeroSectionProps) => {
   return (
-    <div className="flex items-center justify-center h-[60vh] sm:h-[70vh] md:h-screen">
+    <div className="flex items-center justify-center h-[60vh] sm:h-[70vh] md:h-screen pb-25 sm:pb-55 md:pb-40">
       <div className="relative w-full px-4">
         <img
           src="/theEarth.png"

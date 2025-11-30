@@ -17,17 +17,27 @@ interface TeamMemberCardProps {
 export const TeamMemberCard = ({ member }: TeamMemberCardProps) => {
   return (
     <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-lg p-6 hover:bg-white/10 transition-all duration-300 hover:scale-105">
-      <div className="w-24 h-24 sm:w-32 sm:h-32 mx-auto mb-4 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-3xl sm:text-4xl font-bold">
-        {member.name
-          .split(" ")
-          .map((n) => n[0])
-          .join("")}
+      <div className="w-24 h-24 sm:w-32 sm:h-32 mx-auto mb-4 rounded-full overflow-hidden">
+        {member.photo ? (
+          <img
+            src={member.photo}
+            alt={member.name}
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <div className="w-full h-full bg-linear-to-br from-(--color-accent-cyan) to-(--color-accent-blue) flex items-center justify-center text-3xl sm:text-4xl font-bold">
+            {member.name
+              .split(" ")
+              .map((n) => n[0])
+              .join("")}
+          </div>
+        )}
       </div>
 
       <h3 className="text-lg sm:text-xl font-bold text-center mb-1">
         {member.name}
       </h3>
-      <p className="text-cyan-400 text-sm text-center mb-3">{member.role}</p>
+      <p className="text-(--color-accent-cyan) text-sm text-center mb-3">{member.role}</p>
       <p className="text-gray-300 text-sm text-center mb-4 leading-relaxed">
         {member.bio}
       </p>
@@ -56,6 +66,8 @@ export const TeamMemberCard = ({ member }: TeamMemberCardProps) => {
         {member.email && (
           <a
             href={`mailto:${member.email}`}
+            target="_blank"
+            rel="noopener noreferrer"
             className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
             aria-label="Email"
           >

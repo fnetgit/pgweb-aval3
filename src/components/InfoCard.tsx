@@ -9,7 +9,7 @@ export const InfoCard = ({ label, value, labelColor }: InfoCardProps) => {
     <div className="text-center bg-transparent hover:bg-gray-200/10 rounded-lg p-2 transition-colors duration-200 ease-in-out">
       <p
         className={`text-xs mb-2 transition-colors duration-200 ease-in-out ${
-          !labelColor ? "text-cyan-400" : ""
+          !labelColor ? "text-(--color-accent-cyan)" : ""
         }`}
         style={labelColor ? { color: labelColor } : undefined}
       >

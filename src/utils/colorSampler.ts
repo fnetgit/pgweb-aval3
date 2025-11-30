@@ -1,6 +1,8 @@
 type RGB = { r: number; g: number; b: number };
 type HSL = { h: number; s: number; l: number };
 
+const BG_COLOR_PRIMARY_DARK = "#0e1e33";
+
 function getRelativeLuminance({ r, g, b }: RGB): number {
   const [rs, gs, bs] = [r, g, b].map((c) => {
     const c1 = c / 255;
@@ -99,13 +101,12 @@ export async function extractReadableFlagColor(
       ctx.drawImage(img, 0, 0, W, H);
 
       const trySample = (px: number, py: number) => {
-        // make sure coords are ints inside the canvas
         const x = Math.max(0, Math.min(W - 1, Math.round(px)));
         const y = Math.max(0, Math.min(H - 1, Math.round(py)));
         return samplePixel(ctx, x, y);
       };
 
-      const bgColor = hexToRgb("#0e1e33");
+      const bgColor = hexToRgb(BG_COLOR_PRIMARY_DARK);
       const minContrast = 3;
 
       const topLeft = trySample(3, 3);
