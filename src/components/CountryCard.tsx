@@ -33,11 +33,11 @@ export const CountryCard = ({
       onClick={handleClick}
       className="bg-white/10 backdrop-blur-md border border-white/20 rounded-lg overflow-hidden cursor-pointer hover:scale-105 hover:bg-white/20 transition-all duration-300 shadow-lg"
     >
-      <div className="relative h-32 sm:h-36 md:h-40 w-full overflow-hidden">
+      <div className="relative h-32 sm:h-36 md:h-40 w-full overflow-hidden bg-gray-900/30 flex items-center justify-center">
         <img
           src={country.flags.svg}
           alt={country.flags.alt || `Flag of ${country.name.common}`}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-contain"
         />
         <button
           onClick={handleFavoriteClick}
