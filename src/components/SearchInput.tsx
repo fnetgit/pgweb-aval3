@@ -63,7 +63,7 @@ export const SearchInput = ({
         <button
           onClick={handleFavoritesToggle}
           className={`cursor-pointer hover:scale-110 transition-all ${
-            showOnlyFavorites ? "text-yellow-400" : "text-gray-300"
+            showOnlyFavorites ? "text-(--color-accent-yellow)" : "text-gray-300"
           }`}
           type="button"
           title={
@@ -72,7 +72,7 @@ export const SearchInput = ({
         >
           <Star
             size={20}
-            className={showOnlyFavorites ? "fill-yellow-400" : ""}
+            className={showOnlyFavorites ? "fill-(--color-accent-yellow)" : ""}
           />
         </button>
         <button

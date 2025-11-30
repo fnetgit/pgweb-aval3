@@ -33,10 +33,10 @@ export const CountryCard = ({
       onClick={handleClick}
       className="bg-white/10 backdrop-blur-md border border-white/20 rounded-lg overflow-hidden cursor-pointer hover:scale-105 hover:bg-white/20 transition-all duration-300 shadow-lg"
     >
-      <div className="relative h-32 sm:h-36 md:h-40 w-full overflow-hidden bg-gray-900/30 flex items-center justify-center">
+      <div className="relative h-24 sm:h-32 md:h-36 lg:h-40 w-full overflow-hidden bg-gray-900/30 flex items-center justify-center">
         <img
           src={country.flags.svg}
-          alt={country.flags.alt || `Flag of ${country.name.common}`}
+          alt={country.flags.alt || `Bandeira de ${country.name.common}`}
           className="w-full h-full object-contain"
         />
         <button
@@ -49,18 +49,18 @@ export const CountryCard = ({
           <Star
             size={20}
             className={`transition-colors ${
-              isFavorite ? "fill-yellow-400 text-yellow-400" : "text-white"
+              isFavorite ? "fill-(--color-accent-yellow) text-(--color-accent-yellow)" : "text-white"
             }`}
           />
         </button>
       </div>
 
-      <div className="p-3 sm:p-4">
-        <h3 className="text-white font-bold text-base sm:text-lg mb-2 sm:mb-3 truncate">
+      <div className="p-2 sm:p-3 md:p-4">
+        <h3 className="text-white font-bold text-xs sm:text-sm md:text-base lg:text-lg mb-1 sm:mb-2 md:mb-3 truncate">
           {getCountryNameInPortuguese(country)}
         </h3>
 
-        <div className="space-y-1.5 sm:space-y-2 text-gray-200 text-xs sm:text-sm">
+        <div className="space-y-0.5 sm:space-y-1 md:space-y-2 text-gray-200 text-[10px] sm:text-xs md:text-sm">
           <div className="flex items-center gap-2">
             <Users size={16} className="text-gray-300" />
             <span className="text-gray-400">População:</span>

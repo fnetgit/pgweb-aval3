@@ -48,7 +48,7 @@ export const Footer = () => {
           </p>
           <button
             onClick={() => navigate("/about")}
-            className="px-4 py-2 bg-cyan-600 hover:bg-cyan-700 text-white text-xs sm:text-sm font-semibold rounded-lg transition-colors whitespace-nowrap shrink-0"
+            className="px-4 py-2 bg-(--color-accent-cyan) hover:bg-(--color-accent-cyan-dark) text-white text-xs sm:text-sm font-semibold rounded-lg transition-colors whitespace-nowrap shrink-0"
           >
             SOBRE A EQUIPE
           </button>

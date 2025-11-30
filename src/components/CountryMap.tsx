@@ -18,10 +18,10 @@ export const CountryMap = ({
 
   return (
     <div className="mb-8">
-      <h3 className="text-cyan-400 text-lg font-semibold mb-3 text-center">
+      <h3 className="text-(--color-accent-cyan) text-lg font-semibold mb-3 text-center">
         Localização
       </h3>
-      <div className="rounded-lg overflow-hidden shadow-xl border-2 border-cyan-500/30">
+      <div className="rounded-lg overflow-hidden shadow-xl border-2 border-(--color-accent-cyan)/30">
         <iframe
           width="100%"
           height="300"
@@ -38,7 +38,7 @@ export const CountryMap = ({
             href={googleMapsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-cyan-400 hover:text-cyan-300 text-sm underline transition-colors"
+            className="text-(--color-accent-cyan) hover:text-(--color-accent-cyan-dark) text-sm underline transition-colors"
           >
             Ver no Google Maps
           </a>

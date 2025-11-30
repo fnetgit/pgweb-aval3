@@ -12,11 +12,11 @@ export const HeroSection = ({
   onFavoritesFilter,
 }: HeroSectionProps) => {
   return (
-    <div className="flex items-center justify-center h-[60vh] sm:h-[70vh] md:h-screen pb-25 sm:pb-55 md:pb-40">
+    <div className="flex items-center justify-center h-[50vh] sm:h-[55vh] md:h-[65vh] lg:h-[70vh] pb-8">
       <div className="relative w-full px-4">
         <img
           src="/theEarth.png"
-          alt="Earth"
+          alt="Imagem do planeta Terra visto do espaço"
           className="w-full max-w-md md:max-w-4xl lg:max-w-4x1 mx-auto"
         />
         <div className="absolute inset-0 flex items-center justify-center flex-col gap-3 sm:gap-4 -mt-12 sm:-mt-16 md:-mt-20">

@@ -1,5 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useCountryDetails } from "../hooks/useCountryDetails";
+import { getCountryNameInPortuguese } from "../services/api";
 import { Footer } from "../components/Footer";
 import { CountryDetailsHeader } from "../components/CountryDetailsHeader";
 import { CountryFlag } from "../components/CountryFlag";
@@ -38,8 +39,7 @@ export const CountryDetails = () => {
       <div className="px-4 py-8 max-w-2xl mx-auto">
         <CountryFlag
           flagUrl={country.flags.svg}
-          alt={country.flags.alt || ""}
-          countryName={country.name.common}
+          alt={country.flags.alt || `Bandeira de ${getCountryNameInPortuguese(country)}`}
         />
 
         <CountryInfo country={country} labelColor={labelColor} />

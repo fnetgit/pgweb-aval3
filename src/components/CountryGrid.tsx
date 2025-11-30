@@ -27,7 +27,7 @@ export const CountryGrid = ({
   if (error) {
     return (
       <div className="flex items-center justify-center min-h-[400px]">
-        <div className="text-red-400 text-xl">Erro: {error}</div>
+        <div className="text-(--color-error) text-xl">Erro: {error}</div>
       </div>
     );
   }
@@ -43,8 +43,8 @@ export const CountryGrid = ({
   }
 
   return (
-    <div className="container mx-auto px-4 mt-4 sm:mt-0 md:-mt-8 lg:-mt-12 relative z-10">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-5 md:gap-6">
+    <div className="container mx-auto px-4 mt-24 sm:mt-18 md:mt-8 relative z-10">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4 md:gap-5">
         {countries.slice(0, 20).map((country) => (
           <CountryCard
             key={country.cca3}
