@@ -1,91 +1,91 @@
-# React + TypeScript + Vite
+# GeoPedia - Avaliação 3 de Programação Web
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📋 Sobre o Projeto
 
-Currently, two official plugins are available:
+GeoPedia é uma aplicação web desenvolvida como terceira avaliação da disciplina de Programação Web da UESPI. O projeto consiste em uma enciclopédia interativa de países, utilizando a API REST Countries para exibir informações detalhadas sobre nações ao redor do mundo.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**🌐 Site em produção:** https://pgweb-aval3.netlify.app/
 
-## React Compiler
+## 👥 Equipe de Desenvolvimento
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Alan Rodrigues** - [@alanrcastro100](https://github.com/alanrcastro100)
+- **Fabricio Fontenele** - [@Fabricio-Fontenele](https://github.com/Fabricio-Fontenele)
+- **Francisco Neto** - [@fnetgit](https://github.com/fnetgit)
+- **Ruan Pedro** - [@oAnjophb](https://github.com/oAnjophb)
 
-## Expanding the ESLint configuration
+## 🚀 Tecnologias Utilizadas
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Core
+- **React 18** - Biblioteca JavaScript para construção de interfaces
+- **TypeScript** - Superset tipado do JavaScript
+- **Vite** - Build tool e dev server de alta performance
 
-```js
-export default defineConfig([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
+### Estilização
+- **Tailwind CSS 4** - Framework CSS utility-first
+- **PostCSS** - Processador de CSS com autoprefixer
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Roteamento e Estado
+- **React Router DOM** - Gerenciamento de rotas SPA
+- **Custom Hooks** - Gerenciamento de estado e lógica reutilizável
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+### API e Dados
+- **REST Countries API** - API pública para dados de países
+- **Fetch API** - Requisições HTTP nativas
+
+### Ícones e Assets
+- **Lucide React** - Biblioteca de ícones SVG
+
+## ✨ Funcionalidades Implementadas
+
+### Página Principal
+- **Listagem de países** com cards responsivos
+- **Sistema de busca** por nome do país
+- **Filtro por região** (África, Américas, Ásia, Europa, Oceania)
+- **Sistema de favoritos** persistente (localStorage)
+- **Paginação** com 20 países por página
+- **Design responsivo** otimizado para mobile, tablet e desktop
+
+### Página de Detalhes do País
+- **Informações completas**: nome oficial, capital, população, área, idiomas, moedas
+- **Bandeira em destaque** com proporções originais
+- **Mapa interativo** do Google Maps
+- **Países fronteiriços** com navegação rápida
+- **Botão voltar** para navegação fluida
+- **Scroll buttons** para topo/rodapé da página
+
+### Página Sobre a Equipe
+- **Apresentação da equipe** com fotos do GitHub
+- **Links para perfis** (GitHub, LinkedIn, Email)
+- **Descrição do projeto** e tecnologias utilizadas
+- **Cards de membros** com informações e biografia
+
+### Features Especiais
+- **Tradução automática** - Nomes de países em português quando disponível
+- **Color sampling** - Labels pegam cores da bandeira do país
+- **Loading states** - Indicadores de carregamento
+- **Error handling** - Tratamento de erros com mensagens amigáveis
+- **Variáveis CSS** - Sistema de cores centralizado e customizável
+
+## 🛠️ Como Executar
+
+### Pré-requisitos
+- Node.js 18+ 
+- npm ou yarn
+
+### Instalação
+```bash
+# Clone o repositório
+git clone https://github.com/fnetgit/pgweb-aval3.git
+
+# Entre na pasta
+cd pgweb-aval3
+
+# Instale as dependências
+npm install
+
+# Execute em desenvolvimento
+npm run dev
+
+# Build para produção
+npm run build
 ```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x";
-import reactDom from "eslint-plugin-react-dom";
-
-export default defineConfig([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs["recommended-typescript"],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
-
----
-
-## Feature: Flag-driven label color
-
-This project includes a new behavior when viewing a country's details page: the small label text (e.g. "Área", "População", "Idiomas", "Moedas", "Domínios de internet", and "Capital") tries to take a color sampled from the country's flag and apply it to those label titles.
-
-How it works (short):
-
-- When the detail page loads the flag image, the client tries to sample a pixel from the top-left area of the flag.
-- If that color's lightness (HSL lightness) is between 20 and 80 (inclusive) it is chosen.
-- Otherwise we sample a pixel near the bottom center and use it if the same lightness check passes.
-- If neither sample passes, the UI keeps the original cyan color (the `text-cyan-400` fallback).
-
-Notes and testing:
-
-- The sampling is performed on the client using a canvas. The flag image must allow cross-origin reads (the code sets `crossOrigin="anonymous"` on the image). If the server hosting the flags does not set proper CORS headers the sampling will fail and the cyan fallback will be used.
-- To test locally: run `npm run dev`, open the app, go to any country details page and inspect the label colors. You should see labels adopt colors from the flag when a suitable pixel is found.
