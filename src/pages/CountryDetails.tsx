@@ -1,73 +1,21 @@
-import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { getCountryDetails, type Country } from "../services/api";
+import { useCountryDetails } from "../hooks/useCountryDetails";
 import { Footer } from "../components/Footer";
 import { CountryDetailsHeader } from "../components/CountryDetailsHeader";
 import { CountryFlag } from "../components/CountryFlag";
-import { extractReadableFlagColor } from "../utils/colorSampler";
 import { CountryInfo } from "../components/CountryInfo";
 import { CountryStats } from "../components/CountryStats";
 import { CountryAdditionalInfo } from "../components/CountryAdditionalInfo";
 import { LoadingState } from "../components/LoadingState";
 import { ErrorState } from "../components/ErrorState";
 import { ScrollButtons } from "../components/ScrollButtons";
+import { CountryMap } from "../components/CountryMap";
 
 export const CountryDetails = () => {
   const { code } = useParams<{ code: string }>();
   const navigate = useNavigate();
-  const [country, setCountry] = useState<Country | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [labelColor, setLabelColor] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchCountry = async () => {
-      if (!code) {
-        setError("Código do país não fornecido");
-        setIsLoading(false);
-        return;
-      }
-
-      try {
-        setIsLoading(true);
-        const data = await getCountryDetails(code);
-        setCountry(data);
-
-        (async () => {
-          try {
-            const color = await extractReadableFlagColor(data.flags.svg);
-            setLabelColor(color);
-          } catch {
-            setLabelColor(null);
-          }
-        })();
-        setError(null);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : "Falha ao carregar país");
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchCountry();
-  }, [code]);
-
-  const getLanguages = () => {
-    if (!country?.languages) return "N/A";
-    return Object.values(country.languages).join(", ");
-  };
-
-  const getCurrencies = () => {
-    if (!country?.currencies) return "N/A";
-    return Object.entries(country.currencies)
-      .map(([code, curr]) => `${curr.name} (${curr.symbol || code})`)
-      .join(", ");
-  };
-
-  const getBorders = () => {
-    if (!country?.borders || country.borders.length === 0) return "N/A";
-    return country.borders.join(", ");
-  };
+  const { country, isLoading, error, labelColor, languages, currencies, borders } =
+    useCountryDetails(code);
 
   if (isLoading) {
     return <LoadingState />;
@@ -98,16 +46,23 @@ export const CountryDetails = () => {
 
         <CountryStats
           population={country.population}
-          languages={getLanguages()}
-          currencies={getCurrencies()}
+          languages={languages}
+          currencies={currencies}
           area={country.area}
           labelColor={labelColor}
         />
 
         <CountryAdditionalInfo
           internetDomain={country.tld?.[0]}
-          borders={getBorders()}
+          borders={borders}
           labelColor={labelColor}
+        />
+
+        <CountryMap
+          countryName={country.name.common}
+          latitude={country.latlng?.[0]}
+          longitude={country.latlng?.[1]}
+          googleMapsUrl={country.maps?.googleMaps}
         />
 
         <Footer />
