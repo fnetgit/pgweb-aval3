@@ -21,7 +21,7 @@ export const CountryAdditionalInfo = ({
           Domínios de internet
         </p>
         <p className="text-white text-xl font-semibold">
-          {internetDomain || "N/A"}
+          {internetDomain || "Domínio Indisponível"}
         </p>
       </div>
 

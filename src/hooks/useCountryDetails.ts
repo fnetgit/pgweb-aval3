@@ -52,19 +52,19 @@ export const useCountryDetails = (code: string | undefined): UseCountryDetailsRe
   }, [code]);
 
   const getLanguages = (): string => {
-    if (!country?.languages) return "N/A";
+    if (!country?.languages) return "Linguagens Indisponíveis";
     return Object.values(country.languages).join(", ");
   };
 
   const getCurrencies = (): string => {
-    if (!country?.currencies) return "N/A";
+    if (!country?.currencies) return "Moedas Indisponíveis";
     return Object.entries(country.currencies)
       .map(([code, curr]) => `${curr.name} (${curr.symbol || code})`)
       .join(", ");
   };
 
   const getBorders = (): string => {
-    if (!country?.borders || country.borders.length === 0) return "N/A";
+    if (!country?.borders || country.borders.length === 0) return "Fronteiras Indisponíveis";
     return country.borders.join(", ");
   };
 

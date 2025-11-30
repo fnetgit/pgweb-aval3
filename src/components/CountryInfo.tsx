@@ -27,7 +27,7 @@ export const CountryInfo = ({ country, labelColor }: CountryInfoProps) => {
           Capital
         </p>
         <p className="text-white text-xl font-semibold">
-          {country.capital?.[0] || "N/A"}
+          {country.capital?.[0] || "Capital Indisponível"}
         </p>
       </div>
     </>

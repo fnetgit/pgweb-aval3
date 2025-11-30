@@ -20,7 +20,7 @@ export const CountryStats = ({
   };
 
   const formatArea = (area?: number) => {
-    if (!area) return "N/A";
+    if (!area) return "Área Indisponível";
     return new Intl.NumberFormat("pt-BR").format(area) + " km²";
   };
 
