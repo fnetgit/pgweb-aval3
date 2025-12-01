@@ -15,7 +15,7 @@ export const InfoCard = ({ label, value, labelColor }: InfoCardProps) => {
       >
         {label}
       </p>
-      <p className="text-white text-lg font-semibold">{value}</p>
+      <p className="text-(--color-white) text-lg font-semibold">{value}</p>
     </div>
   );
 };

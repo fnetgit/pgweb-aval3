@@ -18,6 +18,7 @@ export const Home = () => {
     filterByRegion,
     searchByName,
     filterByFavorites,
+    activeFilters,
   } = useCountries(favorites);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -53,6 +54,8 @@ export const Home = () => {
         onSearch={handleSearch}
         onFilter={handleFilter}
         onFavoritesFilter={handleFavoritesFilter}
+        totalResults={countries.length}
+        activeFilters={activeFilters}
       />
       <CountryGrid
         countries={currentCountries}

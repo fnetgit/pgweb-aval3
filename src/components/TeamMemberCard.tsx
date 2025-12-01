@@ -38,7 +38,7 @@ export const TeamMemberCard = ({ member }: TeamMemberCardProps) => {
         {member.name}
       </h3>
       <p className="text-(--color-accent-cyan) text-sm text-center mb-3">{member.role}</p>
-      <p className="text-gray-300 text-sm text-center mb-4 leading-relaxed">
+      <p className="text-(--color-text-secondary) text-sm text-center mb-4 leading-relaxed">
         {member.bio}
       </p>
 

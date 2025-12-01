@@ -62,10 +62,14 @@ class CountryFilterService {
 
 export function useCountries(favoritesCodes: string[] = []) {
   const [allCountries, setAllCountries] = useState<Country[]>([]);
-  const [filters, setFilters] = useState<CountryFilter>({
-    region: "",
-    searchTerm: "",
-    showOnlyFavorites: false,
+  const [filters, setFilters] = useState<CountryFilter>(() => {
+    const savedRegion = localStorage.getItem("selectedRegion") || "";
+    const savedSearch = localStorage.getItem("searchTerm") || "";
+    return {
+      region: savedRegion,
+      searchTerm: savedSearch,
+      showOnlyFavorites: false,
+    };
   });
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -94,14 +98,18 @@ export function useCountries(favoritesCodes: string[] = []) {
   );
 
   const filterByRegion = useCallback((region: string) => {
+    localStorage.setItem("selectedRegion", region);
     setFilters((prev) => ({ ...prev, region }));
   }, []);
 
   const searchByName = useCallback((searchTerm: string) => {
+    localStorage.setItem("searchTerm", searchTerm);
     setFilters((prev) => ({ ...prev, searchTerm }));
   }, []);
 
   const resetFilters = useCallback(() => {
+    localStorage.removeItem("selectedRegion");
+    localStorage.removeItem("searchTerm");
     setFilters({ region: "", searchTerm: "", showOnlyFavorites: false });
   }, []);
 
@@ -117,5 +125,6 @@ export function useCountries(favoritesCodes: string[] = []) {
     searchByName,
     resetFilters,
     filterByFavorites,
+    activeFilters: filters,
   };
 }

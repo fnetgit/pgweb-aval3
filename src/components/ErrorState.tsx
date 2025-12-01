@@ -10,7 +10,7 @@ export const ErrorState = ({ message, onBack }: ErrorStateProps) => {
         <div className="text-(--color-error) text-xl mb-4">{message}</div>
         <button
           onClick={onBack}
-          className="px-6 py-2 bg-(--color-primary-lighter) text-white rounded-lg hover:bg-(--color-primary-light)"
+          className="px-6 py-2 bg-(--color-primary-lighter) text-(--color-white) rounded-lg hover:bg-(--color-primary-light)"
         >
           Voltar ao Início
         </button>

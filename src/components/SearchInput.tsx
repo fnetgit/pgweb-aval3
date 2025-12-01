@@ -1,5 +1,6 @@
 import { FilterIcon, Star } from "lucide-react";
 import { useState } from "react";
+import { REGIONS } from "../constants/regions";
 
 interface SearchInputProps {
   onChange?: (value: string) => void;
@@ -9,8 +10,6 @@ interface SearchInputProps {
   className?: string;
 }
 
-const REGIONS = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
-
 export const SearchInput = ({
   onChange,
   onFilterChange,
@@ -18,9 +17,13 @@ export const SearchInput = ({
   placeholder = "Pesquisar por um país...",
   className = "",
 }: SearchInputProps) => {
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState(
+    () => localStorage.getItem("searchTerm") || ""
+  );
   const [isFilterOpen, setIsFilterOpen] = useState(false);
-  const [selectedRegion, setSelectedRegion] = useState("");
+  const [selectedRegion, setSelectedRegion] = useState(
+    () => localStorage.getItem("selectedRegion") || ""
+  );
   const [showOnlyFavorites, setShowOnlyFavorites] = useState(false);
 
   const handleSearchChange = (value: string) => {
@@ -58,12 +61,12 @@ export const SearchInput = ({
           onChange={(e) => handleSearchChange(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder={placeholder}
-          className="grow bg-transparent outline-none text-white placeholder:text-gray-300"
+          className="grow bg-transparent outline-none text-(--color-white) placeholder:text-(--color-text-secondary)"
         />
         <button
           onClick={handleFavoritesToggle}
           className={`cursor-pointer hover:scale-110 transition-all ${
-            showOnlyFavorites ? "text-(--color-accent-yellow)" : "text-gray-300"
+            showOnlyFavorites ? "text-(--color-accent-yellow)" : "text-(--color-text-secondary)"
           }`}
           type="button"
           title={
@@ -79,34 +82,37 @@ export const SearchInput = ({
           onClick={() => setIsFilterOpen(!isFilterOpen)}
           className="cursor-pointer hover:scale-110 transition-transform"
           type="button"
+          title={
+            isFilterOpen ? "Fechar opções de filtro" : "Mostrar opções de filtro"
+          }
         >
-          <FilterIcon className="text-gray-300" />
+          <FilterIcon className="text-(--color-text-secondary)" />
         </button>
       </div>
 
       {isFilterOpen && (
         <div className="absolute top-full mt-2 w-full bg-white/10 backdrop-blur-md border border-white/20 rounded-md overflow-hidden z-50">
           <div className="p-2">
-            <p className="text-white text-sm font-semibold mb-2">
+            <p className="text-(--color-white) text-sm font-semibold mb-2">
               Filtrar por Região
             </p>
             {REGIONS.map((region) => (
               <button
-                key={region}
-                onClick={() => handleRegionClick(region)}
+                key={region.value}
+                onClick={() => handleRegionClick(region.value)}
                 type="button"
-                className={`w-full text-left px-3 py-2 rounded text-white hover:bg-white/20 transition-colors ${
-                  selectedRegion === region ? "bg-white/30" : ""
+                className={`w-full text-left px-3 py-2 rounded text-(--color-white) hover:bg-white/20 transition-colors ${
+                  selectedRegion === region.value ? "bg-white/30" : ""
                 }`}
               >
-                {region}
+                {region.label}
               </button>
             ))}
             {selectedRegion && (
               <button
                 onClick={() => handleRegionClick("")}
                 type="button"
-                className="w-full text-left px-3 py-2 rounded text-gray-300 hover:bg-white/20 transition-colors mt-1"
+                className="w-full text-left px-3 py-2 rounded text-(--color-text-secondary) hover:bg-white/20 transition-colors mt-1"
               >
                 Limpar Filtro
               </button>

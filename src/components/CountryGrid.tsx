@@ -19,7 +19,7 @@ export const CountryGrid = ({
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-[400px]">
-        <div className="text-white text-xl">Carregando países...</div>
+        <div className="text-(--color-white) text-xl">Carregando países...</div>
       </div>
     );
   }
@@ -35,7 +35,7 @@ export const CountryGrid = ({
   if (countries.length === 0) {
     return (
       <div className="flex items-center justify-center min-h-[400px]">
-        <div className="text-gray-300 text-xl">
+        <div className="text-(--color-text-secondary) text-xl">
           Nenhum país encontrado. Tente uma busca diferente.
         </div>
       </div>

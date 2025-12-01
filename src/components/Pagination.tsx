@@ -34,13 +34,13 @@ export const Pagination = ({
   };
 
   return (
-    <div className="flex items-center justify-center gap-2 sm:gap-3 md:gap-4 py-6 sm:py-8 text-white px-4">
+    <div className="flex items-center justify-center gap-2 sm:gap-3 md:gap-4 py-6 sm:py-8 text-(--color-white) px-4">
       <button
         onClick={handleFirst}
         disabled={currentPage === 1}
         className={`px-2 sm:px-3 py-1.5 sm:py-2 rounded transition-colors text-sm sm:text-base ${
           currentPage === 1
-            ? "text-gray-500 cursor-not-allowed"
+            ? "text-(--color-text-disabled) cursor-not-allowed"
             : "hover:bg-(--color-primary-lighter) active:bg-(--color-primary)"
         }`}
         aria-label="Primeira página"
@@ -53,7 +53,7 @@ export const Pagination = ({
         disabled={currentPage === 1}
         className={`px-2 sm:px-3 py-1.5 sm:py-2 rounded transition-colors text-sm sm:text-base ${
           currentPage === 1
-            ? "text-gray-500 cursor-not-allowed"
+            ? "text-(--color-text-disabled) cursor-not-allowed"
             : "hover:bg-(--color-primary-lighter) active:bg-(--color-primary)"
         }`}
         aria-label="Página anterior"
@@ -70,7 +70,7 @@ export const Pagination = ({
         disabled={currentPage === totalPages}
         className={`px-2 sm:px-3 py-1.5 sm:py-2 rounded transition-colors text-sm sm:text-base ${
           currentPage === totalPages
-            ? "text-gray-500 cursor-not-allowed"
+            ? "text-(--color-text-disabled) cursor-not-allowed"
             : "hover:bg-(--color-primary-lighter) active:bg-(--color-primary)"
         }`}
         aria-label="Próxima página"
@@ -83,7 +83,7 @@ export const Pagination = ({
         disabled={currentPage === totalPages}
         className={`px-2 sm:px-3 py-1.5 sm:py-2 rounded transition-colors text-sm sm:text-base ${
           currentPage === totalPages
-            ? "text-gray-500 cursor-not-allowed"
+            ? "text-(--color-text-disabled) cursor-not-allowed"
             : "hover:bg-(--color-primary-lighter) active:bg-(--color-primary)"
         }`}
         aria-label="Última página"

@@ -56,28 +56,28 @@ export const CountryCard = ({
       </div>
 
       <div className="p-2 sm:p-3 md:p-4">
-        <h3 className="text-white font-bold text-xs sm:text-sm md:text-base lg:text-lg mb-1 sm:mb-2 md:mb-3 truncate">
+        <h3 className="text-(--color-white) font-bold text-xs sm:text-sm md:text-base lg:text-lg mb-1 sm:mb-2 md:mb-3 truncate">
           {getCountryNameInPortuguese(country)}
         </h3>
 
         <div className="space-y-0.5 sm:space-y-1 md:space-y-2 text-gray-200 text-[10px] sm:text-xs md:text-sm">
           <div className="flex items-center gap-2">
-            <Users size={16} className="text-gray-300" />
-            <span className="text-gray-400">População:</span>
+            <Users size={16} className="text-(--color-text-secondary)" />
+            <span className="text-(--color-text-muted)">População:</span>
             <span className="font-semibold">
               {formatPopulation(country.population)}
             </span>
           </div>
 
           <div className="flex items-center gap-2">
-            <MapPin size={16} className="text-gray-300" />
-            <span className="text-gray-400">Região:</span>
+            <MapPin size={16} className="text-(--color-text-secondary)" />
+            <span className="text-(--color-text-muted)">Região:</span>
             <span className="font-semibold">{country.region}</span>
           </div>
 
           {country.capital && country.capital.length > 0 && (
             <div className="flex items-start gap-2">
-              <span className="text-gray-400">Capital:</span>
+              <span className="text-(--color-text-muted)">Capital:</span>
               <span className="font-semibold">{country.capital[0]}</span>
             </div>
           )}

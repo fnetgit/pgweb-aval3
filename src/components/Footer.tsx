@@ -6,7 +6,7 @@ export const Footer = () => {
 
   return (
     <div>
-      <footer className="text-white p-4 sm:p-6 mt-8 sm:mt-12">
+      <footer className="text-(--color-white) p-4 sm:p-6 mt-8 sm:mt-12">
         <div className="container mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
           <p className="text-xs sm:text-sm md:text-base text-center sm:text-left flex-1">
             &copy; {currentYear}{" "}
@@ -48,7 +48,7 @@ export const Footer = () => {
           </p>
           <button
             onClick={() => navigate("/about")}
-            className="px-4 py-2 bg-(--color-accent-cyan) hover:bg-(--color-accent-cyan-dark) text-white text-xs sm:text-sm font-semibold rounded-lg transition-colors whitespace-nowrap shrink-0"
+            className="px-4 py-2 bg-(--color-accent-cyan) hover:bg-(--color-accent-cyan-dark) text-(--color-white) text-xs sm:text-sm font-semibold rounded-lg transition-colors whitespace-nowrap shrink-0"
           >
             SOBRE A EQUIPE
           </button>
