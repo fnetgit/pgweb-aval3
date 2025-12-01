@@ -95,7 +95,7 @@ export async function extractReadableFlagColor(
       const H = Math.max(32, Math.min(400, img.naturalHeight));
       canvas.width = W;
       canvas.height = H;
-      const ctx = canvas.getContext("2d");
+      const ctx = canvas.getContext("2d", { willReadFrequently: true });
       if (!ctx) return resolve(null);
 
       ctx.drawImage(img, 0, 0, W, H);
