@@ -1,5 +1,9 @@
 import { useEffect, useState, useCallback, useMemo } from "react";
-import { getAllCountries, type Country } from "../services/api";
+import {
+  getAllCountries,
+  getCountryNameInPortuguese,
+  type Country,
+} from "../services/api";
 
 interface CountryFilter {
   region: string;
@@ -16,9 +20,13 @@ class CountryFilterService {
   static searchByName(countries: Country[], term: string): Country[] {
     if (!term) return countries;
     const lowerTerm = term.toLowerCase();
-    return countries.filter((country) =>
-      country.name.common.toLowerCase().includes(lowerTerm)
-    );
+    return countries.filter((country) => {
+      const englishName = country.name.common.toLowerCase();
+      const portugueseName = getCountryNameInPortuguese(country).toLowerCase();
+      return (
+        englishName.includes(lowerTerm) || portugueseName.includes(lowerTerm)
+      );
+    });
   }
 
   static applyFilters(
