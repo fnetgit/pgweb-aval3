@@ -1,91 +1,155 @@
-# GeoPedia - Avaliação 3 de Programação Web
+<div align="center">
 
-## 📋 Sobre o Projeto
+# 🌍 GeoPedia
 
-GeoPedia é uma aplicação web desenvolvida como terceira avaliação da disciplina de Programação Web da UESPI. O projeto consiste em uma enciclopédia interativa de países, utilizando a API REST Countries para exibir informações detalhadas sobre nações ao redor do mundo.
+### Enciclopédia Interativa de Países do Mundo
 
-**🌐 Site em produção:** https://pgweb-aval3.netlify.app/
+[![Live Demo](https://img.shields.io/badge/🌐_Demo-Live-success?style=for-the-badge)](https://pgweb-aval3.netlify.app/)
+[![Netlify Status](https://img.shields.io/netlify/YOUR_NETLIFY_ID?style=for-the-badge&logo=netlify)](https://pgweb-aval3.netlify.app/)
+
+![React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.6-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-6.0-646CFF?style=flat-square&logo=vite&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
+![React Router](https://img.shields.io/badge/React_Router-7-CA4245?style=flat-square&logo=reactrouter&logoColor=white)
+
+Aplicação web desenvolvida como terceira avaliação da disciplina de **Programação Web** da **UESPI**.  
+Uma plataforma moderna para explorar informações detalhadas sobre todos os países do mundo.
+
+[📱 Ver Demo](https://pgweb-aval3.netlify.app/) · [🐛 Reportar Bug](https://github.com/fnetgit/pgweb-aval3/issues) · [✨ Solicitar Feature](https://github.com/fnetgit/pgweb-aval3/issues)
+
+</div>
+
+---
 
 ## 👥 Equipe de Desenvolvimento
 
-- **Alan Rodrigues** - [@alanrcastro100](https://github.com/alanrcastro100)
-- **Fabricio Fontenele** - [@Fabricio-Fontenele](https://github.com/Fabricio-Fontenele)
-- **Francisco Neto** - [@fnetgit](https://github.com/fnetgit)
-- **Ruan Pedro** - [@oAnjophb](https://github.com/oAnjophb)
+<table align="center">
+  <tr>
+    <td align="center">
+      <a href="https://github.com/alanrcastro100">
+        <img src="https://github.com/alanrcastro100.png" width="100px;" alt="Alan Rodrigues"/><br>
+        <sub><b>Alan Rodrigues</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/Fabricio-Fontenele">
+        <img src="https://github.com/Fabricio-Fontenele.png" width="100px;" alt="Fabricio Fontenele"/><br>
+        <sub><b>Fabricio Fontenele</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/fnetgit">
+        <img src="https://github.com/fnetgit.png" width="100px;" alt="Francisco Neto"/><br>
+        <sub><b>Francisco Neto</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/oAnjophb">
+        <img src="https://github.com/oAnjophb.png" width="100px;" alt="Ruan Pedro"/><br>
+        <sub><b>Ruan Pedro</b></sub>
+      </a>
+    </td>
+  </tr>
+</table>
 
-## 🚀 Tecnologias Utilizadas
+---
 
-### Core
-- **React 18** - Biblioteca JavaScript para construção de interfaces
-- **TypeScript** - Superset tipado do JavaScript
-- **Vite** - Build tool e dev server de alta performance
+## Tecnologias Utilizadas
 
-### Estilização
-- **Tailwind CSS 4** - Framework CSS utility-first
-- **PostCSS** - Processador de CSS com autoprefixer
+### Frontend
 
-### Roteamento e Estado
-- **React Router DOM** - Gerenciamento de rotas SPA
-- **Custom Hooks** - Gerenciamento de estado e lógica reutilizável
+- ![React](https://img.shields.io/badge/-React_18-61DAFB?style=flat-square&logo=react&logoColor=black) Biblioteca JavaScript para UI
+- ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) Superset tipado do JavaScript
+- ![Vite](https://img.shields.io/badge/-Vite-646CFF?style=flat-square&logo=vite&logoColor=white) Build tool de alta performance
+- ![Tailwind](https://img.shields.io/badge/-Tailwind_CSS_4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white) Framework CSS utility-first
 
-### API e Dados
-- **REST Countries API** - API pública para dados de países
-- **Fetch API** - Requisições HTTP nativas
+### Ferramentas
 
-### Ícones e Assets
-- **Lucide React** - Biblioteca de ícones SVG
+- ![React Router](https://img.shields.io/badge/-React_Router-CA4245?style=flat-square&logo=reactrouter&logoColor=white) Gerenciamento de rotas
+- ![REST API](https://img.shields.io/badge/-REST_Countries_API-009688?style=flat-square&logo=api&logoColor=white) API de dados
+- ![Lucide](https://img.shields.io/badge/-Lucide_React-F56565?style=flat-square) Ícones SVG
+- ![PostCSS](https://img.shields.io/badge/-PostCSS-DD3A0A?style=flat-square&logo=postcss&logoColor=white) Processador CSS
 
-## ✨ Funcionalidades Implementadas
+---
+
+## Funcionalidades
 
 ### Página Principal
-- **Listagem de países** com cards responsivos
-- **Sistema de busca** por nome do país
-- **Filtro por região** (África, Américas, Ásia, Europa, Oceania)
-- **Sistema de favoritos** persistente (localStorage)
-- **Paginação** com 20 países por página
-- **Design responsivo** otimizado para mobile, tablet e desktop
+
+- Listagem de países com cards responsivos e imagens otimizadas
+- Sistema de busca inteligente por nome em português ou inglês
+- Filtro por região (África, Américas, Ásia, Europa, Oceania)
+- Sistema de favoritos persistente com localStorage
+- Paginação avançada com 20 países por página e URL persistente
+- Design responsivo otimizado para mobile, tablet e desktop
 
 ### Página de Detalhes do País
-- **Informações completas**: nome oficial, capital, população, área, idiomas, moedas
-- **Bandeira em destaque** com proporções originais
-- **Mapa interativo** do Google Maps
-- **Países fronteiriços** com navegação rápida
-- **Botão voltar** para navegação fluida
-- **Scroll buttons** para topo/rodapé da página
+
+- Informações completas: nome oficial, capital, população, área, idiomas, moedas
+- Bandeira em destaque com proporções originais e descrição
+- Mapa interativo integrado com Google Maps
+- Países fronteiriços com navegação rápida entre vizinhos
+- Navegação fluida com histórico de página preservado
+- Scroll buttons para navegação rápida
 
 ### Página Sobre a Equipe
-- **Apresentação da equipe** com fotos do GitHub
-- **Links para perfis** (GitHub, LinkedIn, Email)
-- **Descrição do projeto** e tecnologias utilizadas
-- **Cards de membros** com informações e biografia
+
+- Apresentação da equipe com fotos do GitHub
+- Links sociais (GitHub, LinkedIn, Email)
+- Descrição do projeto e tecnologias
+- Cards de membros com biografia personalizada
 
 ### Features Especiais
-- **Tradução automática** - Nomes de países em português quando disponível
-- **Color sampling** - Labels pegam cores da bandeira do país
-- **Loading states** - Indicadores de carregamento
-- **Error handling** - Tratamento de erros com mensagens amigáveis
-- **Variáveis CSS** - Sistema de cores centralizado e customizável
 
-## 🛠️ Como Executar
+- Tradução automática - Nomes em português quando disponível
+- Color sampling - Labels extraem cores da bandeira
+- Loading states - Indicadores visuais de carregamento
+- Error handling - Tratamento robusto com mensagens amigáveis
+- Sistema de temas - Variáveis CSS centralizadas
+- Custom Hooks - Lógica reutilizável e otimizada
+
+---
+
+## Como Executar
 
 ### Pré-requisitos
-- Node.js 18+ 
+
+- Node.js 18 ou superior
 - npm ou yarn
 
-### Instalação
+### Instalação e Execução
+
 ```bash
 # Clone o repositório
 git clone https://github.com/fnetgit/pgweb-aval3.git
 
-# Entre na pasta
+# Entre na pasta do projeto
 cd pgweb-aval3
 
 # Instale as dependências
 npm install
 
-# Execute em desenvolvimento
+# Execute em modo de desenvolvimento
 npm run dev
 
 # Build para produção
 npm run build
+
+# Preview da build de produção
+npm run preview
 ```
+
+### Acesse
+
+Abra [http://localhost:5173](http://localhost:5173) no navegador
+
+---
+
+<div align="center">
+
+[![GitHub Stars](https://img.shields.io/github/stars/fnetgit/pgweb-aval3?style=social)](https://github.com/fnetgit/pgweb-aval3)
+
+**Feito com ❤️ pela equipe GeoPedia** | **UESPI - 2025.2**
+
+</div>
