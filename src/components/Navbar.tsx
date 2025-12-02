@@ -18,7 +18,7 @@ export const Navbar = () => {
           <li key={path}>
             <button
               onClick={() => navigate(path)}
-              className={`text-lg sm:text-xl font-medium transition-colors ${
+              className={`text-lg sm:text-xl font-medium transition-colors cursor-pointer ${
                 isActive(path)
                   ? "text-(--color-white)"
                   : "text-(--color-text-secondary) hover:text-(--color-text-muted)"

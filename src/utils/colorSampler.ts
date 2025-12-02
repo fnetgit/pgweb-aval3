@@ -109,19 +109,19 @@ export async function extractReadableFlagColor(
       const bgColor = hexToRgb(BG_COLOR_PRIMARY_DARK);
       const minContrast = 3;
 
-      const topLeft = trySample(3, 3);
-      if (topLeft) {
-        const contrast = getContrastRatio(topLeft, bgColor);
-        if (contrast >= minContrast) {
-          return resolve(rgbToCss(topLeft));
-        }
-      }
+      const samples = [
+        trySample(W * 0.1, H * 0.1),
+        trySample(W * 0.5, H * 0.5),
+        trySample(W * 0.9, H * 0.1),
+        trySample(W * 0.5, H * 0.9),
+      ];
 
-      const centerBottom = trySample((W / 2) * 1.05, H * 0.9);
-      if (centerBottom) {
-        const contrast2 = getContrastRatio(centerBottom, bgColor);
-        if (contrast2 >= minContrast) {
-          return resolve(rgbToCss(centerBottom));
+      for (const sample of samples) {
+        if (sample) {
+          const contrast = getContrastRatio(sample, bgColor);
+          if (contrast >= minContrast) {
+            return resolve(rgbToCss(sample));
+          }
         }
       }
 
@@ -130,11 +130,6 @@ export async function extractReadableFlagColor(
 
     img.onerror = () => resolve(null);
     img.src = flagUrl;
-    if (img.complete && img.naturalWidth) {
-      setTimeout(() => {
-        if (img.onload) img.onload(new Event("load"));
-      }, 0);
-    }
   });
 }
 

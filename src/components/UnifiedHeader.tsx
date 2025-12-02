@@ -6,7 +6,10 @@ interface UnifiedHeaderProps {
   title?: string;
 }
 
-export const UnifiedHeader = ({ showBackButton = false, title }: UnifiedHeaderProps) => {
+export const UnifiedHeader = ({
+  showBackButton = false,
+  title,
+}: UnifiedHeaderProps) => {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -31,7 +34,7 @@ export const UnifiedHeader = ({ showBackButton = false, title }: UnifiedHeaderPr
               onClick={() => navigate(-1)}
               className="flex items-center gap-2 text-(--color-white) hover:text-(--color-text-secondary) transition-colors"
             >
-              <div className="w-10 h-10 rounded-full border-2 border-white/30 flex items-center justify-center hover:bg-white/10 transition-colors">
+              <div className="w-10 h-10 rounded-full border-2 border-white/30 flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer">
                 <ArrowLeft size={20} />
               </div>
             </button>
@@ -52,7 +55,7 @@ export const UnifiedHeader = ({ showBackButton = false, title }: UnifiedHeaderPr
                   className={`text-lg sm:text-xl font-medium transition-colors ${
                     isActive(path)
                       ? "text-(--color-white)"
-                      : "text-(--color-text-secondary) hover:text-(--color-text-muted)"
+                      : "text-(--color-text-secondary) hover:text-(--color-text-muted) cursor-pointer"
                   }`}
                 >
                   {label}

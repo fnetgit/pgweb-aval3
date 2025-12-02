@@ -22,8 +22,13 @@ export const CountryDetails = () => {
     labelColor,
     languages,
     currencies,
-    borders,
+    borderCodes,
   } = useCountryDetails(code);
+
+  const handleBorderClick = (borderCode: string) => {
+    navigate(`/country/${borderCode}`);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   if (isLoading) {
     return <LoadingState />;
@@ -64,8 +69,9 @@ export const CountryDetails = () => {
 
         <CountryAdditionalInfo
           internetDomain={country.tld?.[0]}
-          borders={borders}
+          borderCodes={borderCodes}
           labelColor={labelColor}
+          onBorderClick={handleBorderClick}
         />
 
         <CountryMap

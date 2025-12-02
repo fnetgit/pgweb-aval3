@@ -9,10 +9,12 @@ interface UseCountryDetailsReturn {
   labelColor: string | null;
   languages: string;
   currencies: string;
-  borders: string;
+  borderCodes: string[];
 }
 
-export const useCountryDetails = (code: string | undefined): UseCountryDetailsReturn => {
+export const useCountryDetails = (
+  code: string | undefined
+): UseCountryDetailsReturn => {
   const [country, setCountry] = useState<Country | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -39,7 +41,7 @@ export const useCountryDetails = (code: string | undefined): UseCountryDetailsRe
             setLabelColor(null);
           }
         })();
-        
+
         setError(null);
       } catch (err) {
         setError(err instanceof Error ? err.message : "Falha ao carregar país");
@@ -63,9 +65,9 @@ export const useCountryDetails = (code: string | undefined): UseCountryDetailsRe
       .join(", ");
   };
 
-  const getBorders = (): string => {
-    if (!country?.borders || country.borders.length === 0) return "Fronteiras Indisponíveis";
-    return country.borders.join(", ");
+  const getBorderCodes = (): string[] => {
+    if (!country?.borders || country.borders.length === 0) return [];
+    return country.borders;
   };
 
   return {
@@ -75,6 +77,6 @@ export const useCountryDetails = (code: string | undefined): UseCountryDetailsRe
     labelColor,
     languages: getLanguages(),
     currencies: getCurrencies(),
-    borders: getBorders(),
+    borderCodes: getBorderCodes(),
   };
 };
