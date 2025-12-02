@@ -111,6 +111,10 @@ Uma plataforma moderna para explorar informações detalhadas sobre todos os pa�
 
 ### Instalação e Execução
 
+```
+Retire o ".example" do ".env.example"
+```
+
 ```bash
 # Clone o repositório
 git clone https://github.com/fnetgit/pgweb-aval3.git
