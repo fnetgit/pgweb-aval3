@@ -4,19 +4,10 @@
 
 ### Enciclopédia Interativa de Países do Mundo
 
-[![Live Demo](https://img.shields.io/badge/🌐_Demo-Live-success?style=for-the-badge)](https://pgweb-aval3.netlify.app/)
-[![Netlify Status](https://img.shields.io/netlify/YOUR_NETLIFY_ID?style=for-the-badge&logo=netlify)](https://pgweb-aval3.netlify.app/)
-
-![React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react&logoColor=black)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.6-3178C6?style=flat-square&logo=typescript&logoColor=white)
-![Vite](https://img.shields.io/badge/Vite-6.0-646CFF?style=flat-square&logo=vite&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
-![React Router](https://img.shields.io/badge/React_Router-7-CA4245?style=flat-square&logo=reactrouter&logoColor=white)
-
 Aplicação web desenvolvida como terceira avaliação da disciplina de **Programação Web** da **UESPI**.  
 Uma plataforma moderna para explorar informações detalhadas sobre todos os países do mundo.
 
-[📱 Ver Demo](https://pgweb-aval3.netlify.app/) · [🐛 Reportar Bug](https://github.com/fnetgit/pgweb-aval3/issues) · [✨ Solicitar Feature](https://github.com/fnetgit/pgweb-aval3/issues)
+[📱 Ver Demo](https://geo-pedia.netlify.app/) · [🐛 Reportar Bug](https://github.com/fnetgit/pgweb-aval3/issues) · [✨ Solicitar Feature](https://github.com/fnetgit/pgweb-aval3/issues)
 
 </div>
 
@@ -59,17 +50,17 @@ Uma plataforma moderna para explorar informações detalhadas sobre todos os pa�
 
 ### Frontend
 
-- ![React](https://img.shields.io/badge/-React_18-61DAFB?style=flat-square&logo=react&logoColor=black) Biblioteca JavaScript para UI
-- ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) Superset tipado do JavaScript
-- ![Vite](https://img.shields.io/badge/-Vite-646CFF?style=flat-square&logo=vite&logoColor=white) Build tool de alta performance
-- ![Tailwind](https://img.shields.io/badge/-Tailwind_CSS_4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white) Framework CSS utility-first
+- [![React](https://img.shields.io/badge/-React_18-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev/) Biblioteca JavaScript para UI
+- [![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/) Superset tipado do JavaScript
+- [![Vite](https://img.shields.io/badge/-Vite-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev/) Build tool de alta performance
+- [![Tailwind](https://img.shields.io/badge/-Tailwind_CSS_4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/) Framework CSS utility-first
 
 ### Ferramentas
 
-- ![React Router](https://img.shields.io/badge/-React_Router-CA4245?style=flat-square&logo=reactrouter&logoColor=white) Gerenciamento de rotas
-- ![REST API](https://img.shields.io/badge/-REST_Countries_API-009688?style=flat-square&logo=api&logoColor=white) API de dados
-- ![Lucide](https://img.shields.io/badge/-Lucide_React-F56565?style=flat-square) Ícones SVG
-- ![PostCSS](https://img.shields.io/badge/-PostCSS-DD3A0A?style=flat-square&logo=postcss&logoColor=white) Processador CSS
+- [![React Router](https://img.shields.io/badge/-React_Router-CA4245?style=flat-square&logo=reactrouter&logoColor=white)](https://reactrouter.com/) Gerenciamento de rotas
+- [![REST API](https://img.shields.io/badge/-REST_Countries_API-009688?style=flat-square&logo=api&logoColor=white)](https://restcountries.com/) API de dados
+- [![Lucide](https://img.shields.io/badge/-Lucide_React-F56565?style=flat-square)](https://lucide.dev/) Ícones SVG
+- [![PostCSS](https://img.shields.io/badge/-PostCSS-DD3A0A?style=flat-square&logo=postcss&logoColor=white)](https://postcss.org/) Processador CSS
 
 ---
 
@@ -147,8 +138,6 @@ Abra [http://localhost:5173](http://localhost:5173) no navegador
 ---
 
 <div align="center">
-
-[![GitHub Stars](https://img.shields.io/github/stars/fnetgit/pgweb-aval3?style=social)](https://github.com/fnetgit/pgweb-aval3)
 
 **Feito com ❤️ pela equipe GeoPedia** | **UESPI - 2025.2**
 
