@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import { AboutHeader } from "../components/AboutHeader";
 import { ProjectDescription } from "../components/ProjectDescription";
 import { TeamGrid } from "../components/TeamGrid";
@@ -48,6 +49,10 @@ const teamMembers: TeamMember[] = [
 export const AboutTeam = () => {
   const navigate = useNavigate();
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="min-h-screen bg-(--color-primary) text-white">
       <AboutHeader onBack={() => navigate(-1)} />
@@ -57,7 +62,9 @@ export const AboutTeam = () => {
         <TeamGrid members={teamMembers} />
         <TechnologiesSection />
       </div>
-      <Footer />
+      <div className="flex justify-center">
+        <Footer hideAboutButton />
+      </div>
     </div>
   );
 };

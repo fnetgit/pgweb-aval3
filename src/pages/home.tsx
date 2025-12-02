@@ -6,6 +6,7 @@ import { Footer } from "../components/Footer";
 import { HeroSection } from "../components/HeroSection";
 import { Pagination } from "../components/Pagination";
 import { ScrollButtons } from "../components/ScrollButtons";
+import { useEffect } from "react";
 
 const ITEMS_PER_PAGE = 20;
 
@@ -40,6 +41,10 @@ export const Home = () => {
     filterByFavorites(showOnlyFavorites);
     resetPage();
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="min-h-screen bg-(--color-primary-dark)">

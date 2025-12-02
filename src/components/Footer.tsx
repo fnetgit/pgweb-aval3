@@ -1,6 +1,11 @@
 import { useNavigate } from "react-router-dom";
 
-export const Footer = () => {
+interface FooterProps {
+  hideAboutButton?: boolean;
+}
+
+export const Footer = ({ hideAboutButton = false }: FooterProps) => {
+
   const currentYear = new Date().getFullYear();
   const navigate = useNavigate();
 
@@ -46,12 +51,14 @@ export const Footer = () => {
               Ruan Pedro
             </a>
           </p>
-          <button
-            onClick={() => navigate("/about")}
-            className="px-4 py-2 bg-(--color-accent-cyan) hover:bg-(--color-accent-cyan-dark) text-(--color-white) text-xs sm:text-sm font-semibold rounded-lg transition-colors whitespace-nowrap shrink-0"
-          >
-            SOBRE A EQUIPE
-          </button>
+          {!hideAboutButton && (
+            <button
+              onClick={() => navigate("/about")}
+              className="px-4 py-2 bg-(--color-accent-cyan) hover:bg-(--color-accent-cyan-dark) text-(--color-white) text-xs sm:text-sm font-semibold rounded-lg transition-colors whitespace-nowrap shrink-0"
+            >
+              SOBRE A EQUIPE
+            </button>
+          )}
         </div>
       </footer>
     </div>
