@@ -16,7 +16,7 @@ export const useFavorites = () => {
     try {
       localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
     } catch (error) {
-      console.error("Failed to save favorites:", error);
+      console.error("Erro ao salvar favoritos:", error);
     }
   }, [favorites]);
 

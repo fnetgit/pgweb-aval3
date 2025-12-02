@@ -82,7 +82,9 @@ export function useCountries(favoritesCodes: string[] = []) {
         setAllCountries(sortedData);
         setError(null);
       } catch (err) {
-        setError(err instanceof Error ? err.message : "Unknown error");
+        setError(
+          err instanceof Error ? err.message : "Erro ao carregar países"
+        );
       } finally {
         setIsLoading(false);
       }

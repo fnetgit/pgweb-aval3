@@ -111,10 +111,6 @@ Uma plataforma moderna para explorar informações detalhadas sobre todos os pa�
 
 ### Instalação e Execução
 
-```
-Retire o ".example" do ".env.example"
-```
-
 ```bash
 # Clone o repositório
 git clone https://github.com/fnetgit/pgweb-aval3.git
@@ -122,17 +118,13 @@ git clone https://github.com/fnetgit/pgweb-aval3.git
 # Entre na pasta do projeto
 cd pgweb-aval3
 
+# Retire o ".example" do ".env.example"
+mv .env.example .env
 # Instale as dependências
 npm install
 
-# Execute em modo de desenvolvimento
+# Execute
 npm run dev
-
-# Build para produção
-npm run build
-
-# Preview da build de produção
-npm run preview
 ```
 
 ### Acesse

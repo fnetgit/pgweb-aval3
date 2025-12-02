@@ -82,7 +82,10 @@ class CountryAPIService {
     } catch (error) {
       clearTimeout(timeoutId);
       if (error instanceof Error && error.name === "AbortError") {
-        throw new APIError("Request timeout", 408, url);
+        throw new APIError("Tempo de requisição esgotado. Tente novamente.", 408, url);
+      }
+      if (error instanceof TypeError) {
+        throw new APIError("Erro de conexão. Verifique sua internet e tente novamente.", undefined, url);
       }
       throw error;
     }
@@ -93,8 +96,14 @@ class CountryAPIService {
       const response = await this.fetchWithTimeout(url);
 
       if (!response.ok) {
+        if (response.status === 404) {
+          throw new APIError("Recurso não encontrado", 404, url);
+        }
+        if (response.status >= 500) {
+          throw new APIError("Erro no servidor. Tente novamente mais tarde.", response.status, url);
+        }
         throw new APIError(
-          `HTTP ${response.status}: ${response.statusText}`,
+          `Erro na requisição (${response.status})`,
           response.status,
           url
         );
@@ -107,7 +116,7 @@ class CountryAPIService {
       }
 
       throw new APIError(
-        error instanceof Error ? error.message : "Unknown fetch error",
+        "Erro ao processar resposta da API",
         undefined,
         url
       );
@@ -127,7 +136,7 @@ class CountryAPIService {
       } catch {
         if (i === strategies.length - 1) {
           throw new APIError(
-            "Failed to load countries. Please try again later.",
+            "Não foi possível carregar os países. Tente novamente mais tarde.",
             undefined,
             "all strategies failed"
           );
@@ -135,12 +144,12 @@ class CountryAPIService {
       }
     }
 
-    throw new APIError("All fetch strategies failed");
+    throw new APIError("Falha ao carregar dados dos países");
   }
 
   static async getCountryByCode(code: string): Promise<Country> {
     if (!code || code.length !== 3) {
-      throw new APIError("Invalid country code. Must be 3 characters.", 400);
+      throw new APIError("Código do país inválido", 400);
     }
 
     try {
@@ -149,14 +158,14 @@ class CountryAPIService {
       );
 
       if (!data || data.length === 0) {
-        throw new APIError(`Country with code '${code}' not found`, 404);
+        throw new APIError("País não encontrado", 404);
       }
 
       return data[0];
     } catch (error) {
       if (error instanceof APIError) throw error;
       throw new APIError(
-        `Failed to fetch country details for code '${code}'`,
+        "Erro ao buscar detalhes do país",
         undefined,
         `/alpha/${code}`
       );
