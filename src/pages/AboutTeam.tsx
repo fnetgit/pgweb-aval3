@@ -4,6 +4,7 @@ import { AboutHeader } from "../components/AboutHeader";
 import { ProjectDescription } from "../components/ProjectDescription";
 import { TeamGrid } from "../components/TeamGrid";
 import { TechnologiesSection } from "../components/TechnologiesSection";
+import { Navbar } from "../components/Navbar";
 import type { TeamMember } from "../components/TeamMemberCard";
 import { Footer } from "../components/Footer";
 
@@ -55,9 +56,10 @@ export const AboutTeam = () => {
 
   return (
     <div className="min-h-screen bg-(--color-primary) text-white">
+      <Navbar />
       <AboutHeader onBack={() => navigate(-1)} />
 
-      <div className="container mx-auto px-4 py-8 sm:py-12">
+      <div className="container mx-auto px-4 py-8 sm:py-12 pt-24 sm:pt-28">
         <ProjectDescription />
         <TeamGrid members={teamMembers} />
         <TechnologiesSection />

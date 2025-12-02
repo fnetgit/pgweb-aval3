@@ -6,7 +6,7 @@ interface AboutHeaderProps {
 
 export const AboutHeader = ({ onBack }: AboutHeaderProps) => {
   return (
-    <div className="bg-(--color-primary-light) p-4 sm:p-6">
+    <div className="fixed top-0 left-0 right-0 bg-(--color-primary-light) p-4 sm:p-6 z-50 shadow-lg">
       <div className="container mx-auto flex items-center gap-4">
         <button
           onClick={onBack}
