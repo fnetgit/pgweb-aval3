@@ -50,7 +50,7 @@ export const AboutTeam = () => {
 
   return (
     <div className="min-h-screen bg-(--color-primary) text-white">
-      <AboutHeader onBack={() => navigate("/")} />
+      <AboutHeader onBack={() => navigate(-1)} />
 
       <div className="container mx-auto px-4 py-8 sm:py-12">
         <ProjectDescription />

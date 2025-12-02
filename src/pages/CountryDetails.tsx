@@ -15,8 +15,15 @@ import { CountryMap } from "../components/CountryMap";
 export const CountryDetails = () => {
   const { code } = useParams<{ code: string }>();
   const navigate = useNavigate();
-  const { country, isLoading, error, labelColor, languages, currencies, borders } =
-    useCountryDetails(code);
+  const {
+    country,
+    isLoading,
+    error,
+    labelColor,
+    languages,
+    currencies,
+    borders,
+  } = useCountryDetails(code);
 
   if (isLoading) {
     return <LoadingState />;
@@ -26,7 +33,7 @@ export const CountryDetails = () => {
     return (
       <ErrorState
         message={error || "País não encontrado"}
-        onBack={() => navigate("/")}
+        onBack={() => navigate(-1)}
       />
     );
   }
@@ -34,12 +41,15 @@ export const CountryDetails = () => {
   return (
     <div className="min-h-screen bg-(--color-primary-dark) text-white text-shadow-lg/20">
       <ScrollButtons />
-      <CountryDetailsHeader onBack={() => navigate("/")} />
+      <CountryDetailsHeader onBack={() => navigate(-1)} />
 
       <div className="px-4 py-8 max-w-2xl mx-auto">
         <CountryFlag
           flagUrl={country.flags.svg}
-          alt={country.flags.alt || `Bandeira de ${getCountryNameInPortuguese(country)}`}
+          alt={
+            country.flags.alt ||
+            `Bandeira de ${getCountryNameInPortuguese(country)}`
+          }
         />
 
         <CountryInfo country={country} labelColor={labelColor} />
