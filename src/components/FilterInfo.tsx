@@ -17,20 +17,20 @@ export const FilterInfo = ({
     activeFilters.region || activeFilters.showOnlyFavorites;
 
   return (
-    <div className="flex items-center gap-3 text-(--color-white) text-sm">
-      <div>
-        <span className="font-semibold text-(--color-accent-cyan)">
-          {totalResults}
-        </span>{" "}
-        {totalResults === 1 ? "resultado" : "resultados"}
-      </div>
+    <div className="w-full max-w-md px-4 sm:px-0 min-h-8 flex items-center justify-center">
+      <div className="flex items-center justify-center gap-2 text-(--color-white) text-sm flex-wrap">
+        <div className="whitespace-nowrap">
+          <span className="font-semibold text-(--color-accent-cyan)">
+            {totalResults}
+          </span>{" "}
+          {totalResults === 1 ? "resultado" : "resultados"}
+        </div>
 
-      {hasActiveFilters && (
-        <>
-          <span className="text-(--color-text-muted)">•</span>
-          <div className="flex flex-wrap gap-2">
+        {hasActiveFilters && (
+          <>
+            <span className="text-(--color-text-muted)">•</span>
             {activeFilters.region && (
-              <div className="flex items-center gap-1.5 bg-(--color-primary-light) px-2.5 py-1 rounded-full">
+              <div className="flex items-center gap-1.5 bg-(--color-primary-light) px-2.5 py-1 rounded-full whitespace-nowrap text-xs sm:text-sm">
                 <span className="text-(--color-text-secondary)">Região:</span>
                 <span className="font-medium">
                   {getRegionLabel(activeFilters.region)}
@@ -39,14 +39,14 @@ export const FilterInfo = ({
             )}
 
             {activeFilters.showOnlyFavorites && (
-              <div className="flex items-center gap-1.5 bg-(--color-primary-light) px-2.5 py-1 rounded-full">
+              <div className="flex items-center gap-1.5 bg-(--color-primary-light) px-2.5 py-1 rounded-full whitespace-nowrap text-xs sm:text-sm">
                 <span className="text-(--color-accent-yellow)">★</span>
                 <span className="font-medium">Favoritos</span>
               </div>
             )}
-          </div>
-        </>
-      )}
+          </>
+        )}
+      </div>
     </div>
   );
 };

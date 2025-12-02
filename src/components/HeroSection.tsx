@@ -38,7 +38,7 @@ export const HeroSection = ({
               onFilterChange={onFilter}
               onFavoritesFilterChange={onFavoritesFilter}
             />
-            <div className="mt-3">
+            <div className="mt-3 w-full flex justify-center">
               <FilterInfo
                 totalResults={totalResults}
                 activeFilters={activeFilters}
