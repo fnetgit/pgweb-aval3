@@ -7,7 +7,8 @@ interface CountryInfoProps {
 
 export const CountryInfo = ({ country, labelColor }: CountryInfoProps) => {
   const nameInPortuguese = getCountryNameInPortuguese(country);
-  const originalName = country.name.common;
+  const originalName =
+    country.translations?.por?.official || country.name.official;
 
   return (
     <>
