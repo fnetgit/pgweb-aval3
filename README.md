@@ -7,7 +7,7 @@
 Aplicação web desenvolvida como terceira avaliação da disciplina de **Programação Web** da **UESPI**.  
 Uma plataforma moderna para explorar informações detalhadas sobre todos os países do mundo.
 
-[📱 Ver Demo](https://geo-pedia.netlify.app/) · [🐛 Reportar Bug](https://github.com/fnetgit/pgweb-aval3/issues) · [✨ Solicitar Feature](https://github.com/fnetgit/pgweb-aval3/issues)
+[📱 Ver Demo](https://pgweb-aval3.vercel.app) · [🐛 Reportar Bug](https://github.com/fnetgit/pgweb-aval3/issues) · [✨ Solicitar Feature](https://github.com/fnetgit/pgweb-aval3/issues)
 
 </div>
 
@@ -132,6 +132,9 @@ npm run dev
 Abra [http://localhost:5173](http://localhost:5173) no navegador
 
 ---
+
+### Veja a versão online
+[https://pgweb-aval3.vercel.app](https://pgweb-aval3.vercel.app)
 
 <div align="center">
 
