@@ -1,10 +1,8 @@
-import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import { AboutHeader } from "../components/AboutHeader";
 import { ProjectDescription } from "../components/ProjectDescription";
 import { TeamGrid } from "../components/TeamGrid";
 import { TechnologiesSection } from "../components/TechnologiesSection";
-import { Navbar } from "../components/Navbar";
+import { UnifiedHeader } from "../components/UnifiedHeader";
 import type { TeamMember } from "../components/TeamMemberCard";
 import { Footer } from "../components/Footer";
 
@@ -48,16 +46,13 @@ const teamMembers: TeamMember[] = [
 ];
 
 export const AboutTeam = () => {
-  const navigate = useNavigate();
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
     <div className="min-h-screen bg-(--color-primary) text-white">
-      <Navbar />
-      <AboutHeader onBack={() => navigate(-1)} />
+      <UnifiedHeader showBackButton />
 
       <div className="container mx-auto px-4 py-8 sm:py-12 pt-24 sm:pt-28">
         <ProjectDescription />
@@ -65,7 +60,7 @@ export const AboutTeam = () => {
         <TechnologiesSection />
       </div>
       <div className="flex justify-center">
-        <Footer hideAboutButton />
+        <Footer />
       </div>
     </div>
   );

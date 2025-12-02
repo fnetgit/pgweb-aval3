@@ -2,7 +2,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useCountryDetails } from "../hooks/useCountryDetails";
 import { getCountryNameInPortuguese } from "../services/api";
 import { Footer } from "../components/Footer";
-import { CountryDetailsHeader } from "../components/CountryDetailsHeader";
 import { CountryFlag } from "../components/CountryFlag";
 import { CountryInfo } from "../components/CountryInfo";
 import { CountryStats } from "../components/CountryStats";
@@ -11,6 +10,7 @@ import { LoadingState } from "../components/LoadingState";
 import { ErrorState } from "../components/ErrorState";
 import { ScrollButtons } from "../components/ScrollButtons";
 import { CountryMap } from "../components/CountryMap";
+import { UnifiedHeader } from "../components/UnifiedHeader";
 
 export const CountryDetails = () => {
   const { code } = useParams<{ code: string }>();
@@ -40,10 +40,10 @@ export const CountryDetails = () => {
 
   return (
     <div className="min-h-screen bg-(--color-primary-dark) text-white text-shadow-lg/20">
+      <UnifiedHeader showBackButton />
       <ScrollButtons />
-      <CountryDetailsHeader onBack={() => navigate(-1)} />
 
-      <div className="px-4 py-8 max-w-2xl mx-auto">
+      <div className="px-4 py-8 pt-24 sm:pt-28 max-w-2xl mx-auto">
         <CountryFlag
           flagUrl={country.flags.svg}
           alt={

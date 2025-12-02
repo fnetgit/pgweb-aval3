@@ -1,19 +1,12 @@
-import { useNavigate } from "react-router-dom";
-
-interface FooterProps {
-  hideAboutButton?: boolean;
-}
-
-export const Footer = ({ hideAboutButton = false }: FooterProps) => {
+export const Footer = () => {
 
   const currentYear = new Date().getFullYear();
-  const navigate = useNavigate();
 
   return (
     <div>
       <footer className="text-(--color-white) p-4 sm:p-6 mt-8 sm:mt-12">
-        <div className="container mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
-          <p className="text-xs sm:text-sm md:text-base text-center sm:text-left flex-1">
+        <div className="container mx-auto flex items-center justify-center">
+          <p className="text-xs sm:text-sm md:text-base text-center">
             &copy; {currentYear}{" "}
             <a
               href="https://github.com/alanrcastro100"
@@ -51,14 +44,6 @@ export const Footer = ({ hideAboutButton = false }: FooterProps) => {
               Ruan Pedro
             </a>
           </p>
-          {!hideAboutButton && (
-            <button
-              onClick={() => navigate("/about")}
-              className="px-4 py-2 bg-(--color-accent-cyan) hover:bg-(--color-accent-cyan-dark) text-(--color-white) text-xs sm:text-sm font-semibold rounded-lg transition-colors whitespace-nowrap shrink-0"
-            >
-              SOBRE A EQUIPE
-            </button>
-          )}
         </div>
       </footer>
     </div>
