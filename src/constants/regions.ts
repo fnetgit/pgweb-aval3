@@ -1,6 +1,7 @@
 export const REGIONS = [
   { value: "Africa", label: "África" },
   { value: "Americas", label: "Américas" },
+  { value: "Antarctic", label: "Antártida" },
   { value: "Asia", label: "Ásia" },
   { value: "Europe", label: "Europa" },
   { value: "Oceania", label: "Oceania" },
