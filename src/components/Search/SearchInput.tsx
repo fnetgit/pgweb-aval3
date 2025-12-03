@@ -1,4 +1,4 @@
-import { FilterIcon, Star } from "lucide-react";
+import { FilterIcon, Star, X } from "lucide-react";
 import { useState } from "react";
 import { REGIONS } from "../../constants/regions";
 
@@ -50,6 +50,12 @@ export const SearchInput = ({
     onFavoritesFilterChange?.(newValue);
   };
 
+  const handleClear = () => {
+    setSearchValue("");
+    localStorage.removeItem("searchTerm");
+    onChange?.("");
+  };
+
   return (
     <div
       className={`relative w-full sm:w-4/5 md:w-2/3 max-w-md z-50 ${className}`}
@@ -64,6 +70,16 @@ export const SearchInput = ({
             placeholder={placeholder}
             className="grow bg-transparent outline-none text-(--color-white) placeholder:text-(--color-text-secondary)"
           />
+          {searchValue && (
+            <button
+              onClick={handleClear}
+              className="cursor-pointer hover:scale-110 transition-transform text-(--color-text-secondary) hover:text-(--color-error)"
+              type="button"
+              title="Limpar busca"
+            >
+              <X size={20} />
+            </button>
+          )}
           <button
             onClick={handleFavoritesToggle}
             className={`cursor-pointer hover:scale-110 transition-all ${

@@ -109,12 +109,6 @@ export function useCountries(favoritesCodes: string[] = []) {
     setFilters((prev) => ({ ...prev, searchTerm }));
   }, []);
 
-  const resetFilters = useCallback(() => {
-    localStorage.removeItem("selectedRegion");
-    localStorage.removeItem("searchTerm");
-    setFilters({ region: "", searchTerm: "", showOnlyFavorites: false });
-  }, []);
-
   const filterByFavorites = useCallback((showOnlyFavorites: boolean) => {
     setFilters((prev) => ({ ...prev, showOnlyFavorites }));
   }, []);
@@ -125,7 +119,6 @@ export function useCountries(favoritesCodes: string[] = []) {
     error,
     filterByRegion,
     searchByName,
-    resetFilters,
     filterByFavorites,
     activeFilters: filters,
   };
