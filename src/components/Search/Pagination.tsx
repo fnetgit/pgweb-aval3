@@ -34,7 +34,7 @@ export const Pagination = ({
   };
 
   return (
-    <div className="flex items-center justify-center gap-2 sm:gap-3 md:gap-4 py-6 sm:py-8 text-(--color-white) px-4">
+    <div className="flex items-center justify-center gap-2 sm:gap-3 md:gap-4 py-6 sm:py-8 text-white px-4">
       <button
         onClick={handleFirst}
         disabled={currentPage === 1}

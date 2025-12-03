@@ -29,13 +29,18 @@ export const SearchInput = ({
   useEffect(() => {
     const handleClearSearch = () => {
       setSearchValue("");
+      setSelectedRegion("");
+      setShowOnlyFavorites(false);
       localStorage.removeItem("searchTerm");
+      localStorage.removeItem("selectedRegion");
       onChange?.("");
+      onFilterChange?.("");
+      onFavoritesFilterChange?.(false);
     };
 
     window.addEventListener("clearSearch", handleClearSearch);
     return () => window.removeEventListener("clearSearch", handleClearSearch);
-  }, [onChange]);
+  }, [onChange, onFilterChange, onFavoritesFilterChange]);
 
   const handleSearchChange = (value: string) => {
     setSearchValue(value);
@@ -79,55 +84,57 @@ export const SearchInput = ({
             onChange={(e) => handleSearchChange(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder={placeholder}
-            className="grow bg-transparent outline-none text-(--color-white) placeholder:text-(--color-text-secondary)"
+            className="grow min-w-0 bg-transparent outline-none text-white placeholder:text-(--color-text-secondary)"
           />
-          {searchValue && (
+          <div className="flex items-center gap-2 shrink-0">
+            {searchValue && (
+              <button
+                onClick={handleClear}
+                className="cursor-pointer hover:scale-110 transition-transform text-(--color-text-secondary) hover:text-(--color-error)"
+                type="button"
+                title="Limpar busca"
+              >
+                <X size={20} />
+              </button>
+            )}
             <button
-              onClick={handleClear}
-              className="cursor-pointer hover:scale-110 transition-transform text-(--color-text-secondary) hover:text-(--color-error)"
+              onClick={handleFavoritesToggle}
+              className={`cursor-pointer hover:scale-110 transition-all ${
+                showOnlyFavorites
+                  ? "text-(--color-accent-yellow)"
+                  : "text-(--color-text-secondary)"
+              }`}
               type="button"
-              title="Limpar busca"
-            >
-              <X size={20} />
-            </button>
-          )}
-          <button
-            onClick={handleFavoritesToggle}
-            className={`cursor-pointer hover:scale-110 transition-all ${
-              showOnlyFavorites
-                ? "text-(--color-accent-yellow)"
-                : "text-(--color-text-secondary)"
-            }`}
-            type="button"
-            title={
-              showOnlyFavorites ? "Mostrar todos" : "Mostrar apenas favoritos"
-            }
-          >
-            <Star
-              size={20}
-              className={
-                showOnlyFavorites ? "fill-(--color-accent-yellow)" : ""
+              title={
+                showOnlyFavorites ? "Mostrar todos" : "Mostrar apenas favoritos"
               }
-            />
-          </button>
-          <button
-            onClick={() => setIsFilterOpen(!isFilterOpen)}
-            className="cursor-pointer hover:scale-110 transition-transform"
-            type="button"
-            title={
-              isFilterOpen
-                ? "Fechar opções de filtro"
-                : "Mostrar opções de filtro"
-            }
-          >
-            <FilterIcon className="text-(--color-text-secondary)" />
-          </button>
+            >
+              <Star
+                size={20}
+                className={
+                  showOnlyFavorites ? "fill-(--color-accent-yellow)" : ""
+                }
+              />
+            </button>
+            <button
+              onClick={() => setIsFilterOpen(!isFilterOpen)}
+              className="cursor-pointer hover:scale-110 transition-transform"
+              type="button"
+              title={
+                isFilterOpen
+                  ? "Fechar opções de filtro"
+                  : "Mostrar opções de filtro"
+              }
+            >
+              <FilterIcon className="text-(--color-text-secondary)" />
+            </button>
+          </div>
         </div>
 
         {isFilterOpen && (
           <div className="absolute top-full mt-2 left-4 right-4 sm:left-0 sm:right-0 bg-white/10 backdrop-blur-md border border-white/20 rounded-md overflow-hidden z-50">
             <div className="p-2">
-              <p className="text-(--color-white) text-sm font-semibold mb-2">
+              <p className="text-white text-sm font-semibold mb-2">
                 Filtrar por Região
               </p>
               {REGIONS.map((region) => (
@@ -135,7 +142,7 @@ export const SearchInput = ({
                   key={region.value}
                   onClick={() => handleRegionClick(region.value)}
                   type="button"
-                  className={`w-full text-left px-3 py-2 rounded text-(--color-white) hover:bg-white/20 transition-colors ${
+                  className={`w-full text-left px-3 py-2 rounded text-white hover:bg-white/20 transition-colors ${
                     selectedRegion === region.value ? "bg-white/30" : ""
                   }`}
                 >
