@@ -42,7 +42,7 @@ export const CountryCard = ({
         />
         <button
           onClick={handleFavoriteClick}
-          className="absolute top-2 right-2 p-2 bg-black/50 backdrop-blur-sm rounded-full hover:bg-black/70 transition-all duration-200 hover:scale-110"
+          className="absolute top-2 right-2 p-2 bg-black/50 backdrop-blur-sm rounded-full hover:bg-black/70 transition-all duration-200 hover:scale-110 cursor-pointer"
           aria-label={
             isFavorite ? "Remover dos favoritos" : "Adicionar aos favoritos"
           }
@@ -50,7 +50,9 @@ export const CountryCard = ({
           <Star
             size={20}
             className={`transition-colors ${
-              isFavorite ? "fill-(--color-accent-yellow) text-(--color-accent-yellow)" : "text-white"
+              isFavorite
+                ? "fill-(--color-accent-yellow) text-(--color-accent-yellow)"
+                : "text-white"
             }`}
           />
         </button>
@@ -73,7 +75,9 @@ export const CountryCard = ({
           <div className="flex items-center gap-2">
             <MapPin size={16} className="text-(--color-text-secondary)" />
             <span className="text-(--color-text-muted)">Região:</span>
-            <span className="font-semibold">{getRegionLabel(country.region)}</span>
+            <span className="font-semibold">
+              {getRegionLabel(country.region)}
+            </span>
           </div>
 
           {country.capital && country.capital.length > 0 && (

@@ -1,5 +1,5 @@
 import { FilterIcon, Star, X } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { REGIONS } from "../../constants/regions";
 
 interface SearchInputProps {
@@ -25,6 +25,17 @@ export const SearchInput = ({
     () => localStorage.getItem("selectedRegion") || ""
   );
   const [showOnlyFavorites, setShowOnlyFavorites] = useState(false);
+
+  useEffect(() => {
+    const handleClearSearch = () => {
+      setSearchValue("");
+      localStorage.removeItem("searchTerm");
+      onChange?.("");
+    };
+
+    window.addEventListener("clearSearch", handleClearSearch);
+    return () => window.removeEventListener("clearSearch", handleClearSearch);
+  }, [onChange]);
 
   const handleSearchChange = (value: string) => {
     setSearchValue(value);

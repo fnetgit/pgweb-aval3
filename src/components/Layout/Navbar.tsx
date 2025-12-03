@@ -6,6 +6,14 @@ export const Navbar = () => {
 
   const isActive = (path: string) => location.pathname === path;
 
+  const handleNavigation = (path: string) => {
+    if (path === "/" && location.pathname === "/") {
+      window.dispatchEvent(new CustomEvent("clearSearch"));
+    } else {
+      navigate(path);
+    }
+  };
+
   const navItems = [
     { path: "/", label: "Home" },
     { path: "/sobre", label: "Sobre" },
@@ -17,7 +25,7 @@ export const Navbar = () => {
         {navItems.map(({ path, label }) => (
           <li key={path}>
             <button
-              onClick={() => navigate(path)}
+              onClick={() => handleNavigation(path)}
               className={`text-lg sm:text-xl font-medium transition-colors cursor-pointer ${
                 isActive(path)
                   ? "text-(--color-white)"

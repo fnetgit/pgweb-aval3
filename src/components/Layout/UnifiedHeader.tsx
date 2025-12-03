@@ -52,7 +52,7 @@ export const UnifiedHeader = ({
               <li key={path}>
                 <button
                   onClick={() => handleNavigation(path)}
-                  className={`text-lg sm:text-xl font-medium transition-colors ${
+                  className={`text-lg sm:text-xl font-medium transition-colors cursor-pointer ${
                     isActive(path)
                       ? "text-(--color-white)"
                       : "text-(--color-text-secondary) hover:text-(--color-text-muted) cursor-pointer"
