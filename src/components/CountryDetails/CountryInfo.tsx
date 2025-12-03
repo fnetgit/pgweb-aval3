@@ -1,4 +1,5 @@
-import { type Country, getCountryNameInPortuguese } from "../services/api";
+import { type Country, getCountryNameInPortuguese } from "../../services/api";
+import { getRegionLabel } from "../../constants/regions";
 
 interface CountryInfoProps {
   country: Country;
@@ -15,7 +16,7 @@ export const CountryInfo = ({ country, labelColor }: CountryInfoProps) => {
       <div className="text-center mb-2">
         <h1 className="text-4xl font-bold mb-1">{nameInPortuguese}</h1>
         <p className="text-(--color-text-muted) text-lg mb-1">{originalName}</p>
-        <p className="text-(--color-text-muted) text-base">{country.region}</p>
+        <p className="text-(--color-text-muted) text-base">{getRegionLabel(country.region)}</p>
       </div>
 
       <div className="text-center mb-8">

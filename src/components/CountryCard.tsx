@@ -1,6 +1,7 @@
 import { type Country, getCountryNameInPortuguese } from "../services/api";
 import { Users, MapPin, Star } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { getRegionLabel } from "../constants/regions";
 
 interface CountryCardProps {
   country: Country;
@@ -72,7 +73,7 @@ export const CountryCard = ({
           <div className="flex items-center gap-2">
             <MapPin size={16} className="text-(--color-text-secondary)" />
             <span className="text-(--color-text-muted)">Região:</span>
-            <span className="font-semibold">{country.region}</span>
+            <span className="font-semibold">{getRegionLabel(country.region)}</span>
           </div>
 
           {country.capital && country.capital.length > 0 && (

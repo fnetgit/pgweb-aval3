@@ -16,6 +16,11 @@ export interface Currency {
   symbol: string;
 }
 
+export interface BorderCountry {
+  code: string;
+  name: string;
+}
+
 export interface Country {
   name: CountryName;
   translations?: {

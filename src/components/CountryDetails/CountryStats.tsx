@@ -1,4 +1,4 @@
-import { InfoCard } from "./InfoCard";
+import { InfoCard } from "../InfoCard";
 
 interface CountryStatsProps {
   population: number;

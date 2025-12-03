@@ -1,5 +1,11 @@
 import { useEffect, useState } from "react";
-import { getCountryDetails, type Country } from "../services/api";
+import {
+  getCountryDetails,
+  getBorderCountries,
+  getCountryNameInPortuguese,
+  type Country,
+  type BorderCountry,
+} from "../services/api";
 import { extractReadableFlagColor } from "../utils/colorSampler";
 
 interface UseCountryDetailsReturn {
@@ -10,6 +16,7 @@ interface UseCountryDetailsReturn {
   languages: string;
   currencies: string;
   borderCodes: string[];
+  borderCountries: BorderCountry[];
 }
 
 export const useCountryDetails = (
@@ -19,6 +26,7 @@ export const useCountryDetails = (
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [labelColor, setLabelColor] = useState<string | null>(null);
+  const [borderCountries, setBorderCountries] = useState<BorderCountry[]>([]);
 
   useEffect(() => {
     const fetchCountry = async () => {
@@ -41,6 +49,28 @@ export const useCountryDetails = (
             setLabelColor(null);
           }
         })();
+
+        if (data.borders && data.borders.length > 0) {
+          try {
+            const borderCountriesData = await getBorderCountries(data.borders);
+            const bordersWithNames = borderCountriesData.map(
+              (borderCountry) => ({
+                code: borderCountry.cca3,
+                name: getCountryNameInPortuguese(borderCountry),
+              })
+            );
+            setBorderCountries(bordersWithNames);
+          } catch {
+            setBorderCountries(
+              data.borders.map((borderCode) => ({
+                code: borderCode,
+                name: borderCode,
+              }))
+            );
+          }
+        } else {
+          setBorderCountries([]);
+        }
 
         setError(null);
       } catch (err) {
@@ -78,5 +108,6 @@ export const useCountryDetails = (
     languages: getLanguages(),
     currencies: getCurrencies(),
     borderCodes: getBorderCodes(),
+    borderCountries,
   };
 };
