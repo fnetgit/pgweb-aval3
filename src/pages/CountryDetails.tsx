@@ -1,16 +1,16 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useCountryDetails } from "../hooks/useCountryDetails";
 import { getCountryNameInPortuguese } from "../services/api";
-import { Footer } from "../components/Footer";
+import { Footer } from "../components/Layout/Footer";
 import { CountryFlag } from "../components/CountryDetails/CountryFlag";
 import { CountryInfo } from "../components/CountryDetails/CountryInfo";
 import { CountryStats } from "../components/CountryDetails/CountryStats";
 import { CountryAdditionalInfo } from "../components/CountryDetails/CountryAdditionalInfo";
 import { LoadingState } from "../components/LoadingState";
 import { ErrorState } from "../components/ErrorState";
-import { ScrollButtons } from "../components/ScrollButtons";
+import { ScrollButtons } from "../components/Layout/ScrollButtons";
 import { CountryMap } from "../components/CountryDetails/CountryMap";
-import { UnifiedHeader } from "../components/UnifiedHeader";
+import { UnifiedHeader } from "../components/Layout/UnifiedHeader";
 
 export const CountryDetails = () => {
   const { code } = useParams<{ code: string }>();

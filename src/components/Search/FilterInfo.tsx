@@ -1,4 +1,4 @@
-import { getRegionLabel } from "../constants/regions";
+import { getRegionLabel } from "../../constants/regions";
 
 interface FilterInfoProps {
   totalResults: number;

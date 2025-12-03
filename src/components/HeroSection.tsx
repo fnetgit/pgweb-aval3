@@ -1,5 +1,5 @@
-import { SearchInput } from "./SearchInput";
-import { FilterInfo } from "./FilterInfo";
+import { SearchInput } from "./Search/SearchInput";
+import { FilterInfo } from "./Search/FilterInfo";
 
 interface HeroSectionProps {
   onSearch: (searchTerm: string) => void;

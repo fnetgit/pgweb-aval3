@@ -1,6 +1,6 @@
 import { FilterIcon, Star } from "lucide-react";
 import { useState } from "react";
-import { REGIONS } from "../constants/regions";
+import { REGIONS } from "../../constants/regions";
 
 interface SearchInputProps {
   onChange?: (value: string) => void;

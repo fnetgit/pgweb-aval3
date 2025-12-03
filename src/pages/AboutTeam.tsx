@@ -1,10 +1,10 @@
 import { useEffect } from "react";
-import { ProjectDescription } from "../components/ProjectDescription";
-import { TeamGrid } from "../components/TeamGrid";
-import { TechnologiesSection } from "../components/TechnologiesSection";
-import { UnifiedHeader } from "../components/UnifiedHeader";
-import type { TeamMember } from "../components/TeamMemberCard";
-import { Footer } from "../components/Footer";
+import { ProjectDescription } from "../components/AboutTeam/ProjectDescription";
+import { TeamGrid } from "../components/AboutTeam/TeamGrid";
+import { TechnologiesSection } from "../components/AboutTeam/TechnologiesSection";
+import { UnifiedHeader } from "../components/Layout/UnifiedHeader";
+import type { TeamMember } from "../components/AboutTeam/TeamMemberCard";
+import { Footer } from "../components/Layout/Footer";
 
 const teamMembers: TeamMember[] = [
   {

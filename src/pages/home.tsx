@@ -2,11 +2,11 @@ import { useCountries } from "../hooks/useCountries";
 import { useFavorites } from "../hooks/useFavorites";
 import { usePagination } from "../hooks/usePagination";
 import { CountryGrid } from "../components/CountryGrid";
-import { Footer } from "../components/Footer";
+import { Footer } from "../components/Layout/Footer";
 import { HeroSection } from "../components/HeroSection";
-import { Pagination } from "../components/Pagination";
-import { ScrollButtons } from "../components/ScrollButtons";
-import { Navbar } from "../components/Navbar";
+import { Pagination } from "../components/Search/Pagination";
+import { ScrollButtons } from "../components/Layout/ScrollButtons";
+import { Navbar } from "../components/Layout/Navbar";
 import { useEffect } from "react";
 
 const ITEMS_PER_PAGE = 20;
